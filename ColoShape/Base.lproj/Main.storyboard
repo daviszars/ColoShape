@@ -52,6 +52,12 @@
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="difficultySegmentedControl" destination="Z41-TV-leB" id="cb3-CZ-uZg"/>
+                        <outlet property="menuTitle" destination="xRD-p8-aUH" id="OH5-Hv-Btm"/>
+                        <outlet property="playButton" destination="15U-jM-3sR" id="nwA-0z-49h"/>
+                        <outlet property="settingsButton" destination="D3f-YX-B9d" id="uKw-v8-t6i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
