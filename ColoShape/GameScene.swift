@@ -10,35 +10,64 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    struct PhysicsCategory {
-        static let none      : UInt32 = 0
-        static let all       : UInt32 = UInt32.max
-        static let shape   : UInt32 = 0b1
-    }
+    var targetColor: UIColor? = nil
+    var targetShape: String? = nil
+    var score = 0
+    var scoreLabel = SKLabelNode()
     
     override func didMove(to view: SKView) {
-        backgroundColor = SKColor.darkGray
+        backgroundColor = SKColor.white
         
-        run(SKAction.repeatForever(
+        scoreLabel.text = ("Score: \(score)")
+        scoreLabel.fontSize = 20
+        scoreLabel.fontColor = SKColor.black
+        scoreLabel.position = CGPoint(x: size.width - 50, y: size.height - 50)
+        addChild(scoreLabel)
+        
+        targetColor = ColoShape.colors.randomElement()
+        targetShape = ColoShape.shapes.randomElement()
+        
+        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .black, scale: .large)
+        let image = UIImage(systemName: targetShape!, withConfiguration: shapeConfig)!.withTintColor(targetColor!)
+        let data = image.pngData()!
+        let newImage = UIImage(data:data)!
+        let texture = SKTexture(image: newImage)
+        let targetColoShape = SKSpriteNode(texture: texture, size: CGSize(width: 120, height: 120))
+        targetColoShape.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        targetColoShape.alpha = 0.0
+        addChild(targetColoShape)
+
+        let fadeIn = SKAction.fadeIn(withDuration: 2.5)
+        let fadeOut = SKAction.fadeOut(withDuration: 2.5)
+        let addShapes = SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addShape),
-                SKAction.wait(forDuration: 0.5)
+                SKAction.wait(forDuration: 0.8)
             ])
-        ))
+        )
+        let sequence = SKAction.sequence([fadeIn, fadeOut, addShapes])
+
+        targetColoShape.run(sequence)
+
     }
     
     func addShape() {
         let colors = ColoShape.colors.randomElement()!
         let shapes = ColoShape.shapes.randomElement()!
         
-        let shapeConfig = UIImage.SymbolConfiguration(weight: .heavy)
+        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .black, scale: .large)
         let image = UIImage(systemName: shapes, withConfiguration: shapeConfig)!.withTintColor(colors)
         let data = image.pngData()!
         let newImage = UIImage(data:data)!
         let texture = SKTexture(image: newImage)
-        let shape = SKSpriteNode(texture: texture,size: CGSize(width: 120, height: 120))
+        let shape = SKSpriteNode(texture: texture, size: CGSize(width: 120, height: 120))
         shape.isUserInteractionEnabled = false
-        shape.name = shapes
+        
+        if targetShape == shapes || targetColor == colors {
+            shape.name = "good"
+        } else {
+            shape.name = "bad"
+        }
         
         let sectorsX = [size.width * 0.2, size.width * 0.4, size.width * 0.6, size.width * 0.8]
         let actualX = sectorsX.randomElement()
@@ -49,14 +78,29 @@ class GameScene: SKScene {
         let actionMove = SKAction.move(to: CGPoint(x: actualX!, y: -shape.size.height/2),
                                        duration: TimeInterval(CGFloat(2.5)))
         let actionMoveDone = SKAction.removeFromParent()
-        shape.run(SKAction.sequence([actionMove, actionMoveDone]))
+        shape.run(SKAction.sequence([actionMove, actionMoveDone])) {
+            if shape.name == "good"{
+                self.gameOver()
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first as UITouch?
         let touchedNode = atPoint((touch?.location(in: self))!)
-        if touchedNode.name == "circle" {
+        if touchedNode.name == "good" {
             touchedNode.removeFromParent()
+            score += 1
+            scoreLabel.text = "Score: \(score)"
+        } else if touchedNode.name == "bad" {
+            gameOver()
         }
+    }
+    
+    func gameOver() {
+        print("game over")
+        let reveal = SKTransition.fade(withDuration: 1.0)
+        let gameOverScene = GameOverScene(size: view!.bounds.size, score: score)
+        self.view?.presentScene(gameOverScene, transition: reveal)
     }
 }

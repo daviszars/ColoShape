@@ -15,6 +15,7 @@
 		2921954325409F3C00715FAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2921954125409F3C00715FAB /* Main.storyboard */; };
 		2921954525409F4000715FAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2921954425409F4000715FAB /* Assets.xcassets */; };
 		29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900B25473B2C00D5AE94 /* ColoShape.swift */; };
+		29C790102547591800D5AE94 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900F2547591800D5AE94 /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2921954425409F4000715FAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2921954625409F4000715FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29C7900B25473B2C00D5AE94 /* ColoShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoShape.swift; sourceTree = "<group>"; };
+		29C7900F2547591800D5AE94 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				2921953925409F3C00715FAB /* GameScene.sks */,
 				2921953B25409F3C00715FAB /* Actions.sks */,
 				29C7900B25473B2C00D5AE94 /* ColoShape.swift */,
+				29C7900F2547591800D5AE94 /* GameOverScene.swift */,
 				2921953D25409F3C00715FAB /* GameScene.swift */,
 				2921953F25409F3C00715FAB /* GameViewController.swift */,
 				2921954125409F3C00715FAB /* Main.storyboard */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29C790102547591800D5AE94 /* GameOverScene.swift in Sources */,
 				29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */,
 				2921953E25409F3C00715FAB /* GameScene.swift in Sources */,
 				2921954025409F3C00715FAB /* GameViewController.swift in Sources */,
