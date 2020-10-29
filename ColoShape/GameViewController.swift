@@ -21,7 +21,6 @@ class GameViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(playButtonPressed))
         playButton.addGestureRecognizer(tap)
-
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -41,7 +40,6 @@ class GameViewController: UIViewController {
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
-        
     }
     
 }
