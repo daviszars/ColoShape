@@ -28,7 +28,7 @@ class GameViewController: UIViewController {
     }
     
     @objc func playButtonPressed(sender: UITapGestureRecognizer? = nil) {
-        menuTitle.isHidden = true
+        menuTitle.removeFromSuperview()
         playButton.removeFromSuperview()
         difficultySegmentedControl.removeFromSuperview()
         settingsButton.removeFromSuperview()

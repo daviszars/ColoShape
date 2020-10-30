@@ -52,6 +52,13 @@ class GameOverScene: SKScene {
                         self.view?.presentScene(scene, transition:reveal)
                     }
                 ]))
+            } else if (atPoint(location).name == "mainMenu") {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController")
+                vc.view.frame = (self.view?.frame)!
+                vc.view.layoutIfNeeded()
+                UIView.transition(with: self.view!, duration: 0.0, options: .transitionCrossDissolve, animations:
+                                    { self.view?.window?.rootViewController = vc }, completion: { completed in })
             }
         }
     }
