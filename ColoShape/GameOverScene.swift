@@ -10,8 +10,9 @@ import GameplayKit
 
 class GameOverScene: SKScene {
     
-    init(size: CGSize, score: Int) {
-        super.init(size: size)
+    var difficulty: Int = 0
+    var score: Int = 0
+    override func didMove(to view: SKView) {
         backgroundColor = SKColor.white
         
         let scoreLabel = SKLabelNode(fontNamed: "Helvetica")
@@ -47,8 +48,9 @@ class GameOverScene: SKScene {
                     SKAction.wait(forDuration: 0.1),
                     SKAction.run() { [weak self] in
                         guard let `self` = self else { return }
-                        let reveal = SKTransition.fade(withDuration: 0.5)
+                        let reveal = SKTransition.fade(withDuration: 0.0)
                         let scene = GameScene(size: self.size)
+                        scene.difficulty = self.difficulty
                         self.view?.presentScene(scene, transition:reveal)
                     }
                 ]))
@@ -61,10 +63,6 @@ class GameOverScene: SKScene {
                                     { self.view?.window?.rootViewController = vc }, completion: { completed in })
             }
         }
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
 }

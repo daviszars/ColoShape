@@ -10,4 +10,5 @@ import UIKit
 struct ColoShape {
     static let shapes: [String] = ["circle", "square", "diamond", "triangle", "hexagon"]
     static let colors: [UIColor] = [.yellow, .blue, .red, .green, .orange]
+    
 }

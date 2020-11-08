@@ -14,6 +14,7 @@ class GameScene: SKScene {
     var targetShape: String? = nil
     var score = 0
     var scoreLabel = SKLabelNode()
+    var difficulty: Int = 0
     
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.white
@@ -24,8 +25,16 @@ class GameScene: SKScene {
         scoreLabel.position = CGPoint(x: size.width - 50, y: size.height - 50)
         addChild(scoreLabel)
         
-        targetColor = ColoShape.colors.randomElement()
+        if difficulty == 0 {
+            targetColor = UIColor.black
+        } else {
+            targetColor = ColoShape.colors.randomElement()
+        }
         targetShape = ColoShape.shapes.randomElement()
+        
+        if difficulty == 0 {
+            targetColor = UIColor.black
+        }
         
         let shapeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .black, scale: .large)
         let image = UIImage(systemName: targetShape!, withConfiguration: shapeConfig)!.withTintColor(targetColor!)
@@ -37,12 +46,12 @@ class GameScene: SKScene {
         targetColoShape.alpha = 0.0
         addChild(targetColoShape)
         
-        let fadeIn = SKAction.fadeIn(withDuration: 2.5)
-        let fadeOut = SKAction.fadeOut(withDuration: 2.5)
+        let fadeIn = SKAction.fadeIn(withDuration: 1.0)
+        let fadeOut = SKAction.fadeOut(withDuration: 1.0)
         let addShapes = SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addShape),
-                SKAction.wait(forDuration: 0.8)
+                SKAction.wait(forDuration: 0.6)
             ])
         )
         let sequence = SKAction.sequence([fadeIn, fadeOut, addShapes])
@@ -50,7 +59,12 @@ class GameScene: SKScene {
     }
     
     func addShape() {
-        let colors = ColoShape.colors.randomElement()!
+        let colors: UIColor
+        if difficulty == 0 {
+            colors = UIColor.black
+        } else {
+            colors = ColoShape.colors.randomElement()!
+        }
         let shapes = ColoShape.shapes.randomElement()!
         
         let shapeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .black, scale: .large)
@@ -62,7 +76,7 @@ class GameScene: SKScene {
         shape.isUserInteractionEnabled = false
         let startingX = [size.width * 0.2, size.width * 0.3, size.width * 0.4, size.width * 0.5, size.width * 0.6, size.width * 0.7, size.width * 0.8].randomElement()
         shape.position = CGPoint(x: startingX!, y: size.height + shape.size.height/2)
-        if targetShape == shapes || targetColor == colors {
+        if targetShape == shapes || difficulty != 0 && targetColor == colors {
             shape.name = "good"
         } else {
             shape.name = "bad"
@@ -70,7 +84,7 @@ class GameScene: SKScene {
         addChild(shape)
         
         let actionMove = SKAction.move(to: CGPoint(x: startingX!, y: +shape.size.height/2),
-                                       duration: TimeInterval(CGFloat(2.5)))
+                                       duration: TimeInterval(CGFloat(2.0)))
         let actionMoveDone = SKAction.removeFromParent()
         shape.run(SKAction.sequence([actionMove, actionMoveDone])) {
             if shape.name == "good"{
@@ -93,8 +107,10 @@ class GameScene: SKScene {
     }
     
     func gameOver() {
-        let reveal = SKTransition.fade(withDuration: 1.0)
-        let gameOverScene = GameOverScene(size: view!.bounds.size, score: score)
+        let reveal = SKTransition.fade(withDuration: 0.0)
+        let gameOverScene = GameOverScene(size: view!.bounds.size)
+        gameOverScene.difficulty = self.difficulty
+        gameOverScene.score = self.score
         self.view?.presentScene(gameOverScene, transition: reveal)
     }
     
