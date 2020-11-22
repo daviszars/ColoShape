@@ -16,8 +16,9 @@ class GameScene: SKScene {
     var score: Int = 0
     var scoreLabel = SKLabelNode()
     var difficulty: Int = 0
-    var counter: Int = 0 //for addShape() speed
-    let rand: [Int] = [1, 2, 3] //for increased chance of good coloshape
+    var counter: Int = 0
+    var badCounter: Int = 0
+    let rand: [Int] = [1, 2, 3]
     var moveSpeed: Float = 4.0
     
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
@@ -68,12 +69,24 @@ class GameScene: SKScene {
         targetColoShape.alpha = 0.0
         addChild(targetColoShape)
         
+        var waitDuration: Double
+        switch difficulty {
+        case 0:
+            waitDuration = 0.7
+        case 1:
+            waitDuration = 0.8
+        case 2:
+            waitDuration = 0.9
+        default:
+            waitDuration = 0.8
+        }
+        
         let fadeIn = SKAction.fadeIn(withDuration: 1.0)
         let fadeOut = SKAction.fadeOut(withDuration: 1.0)
         let addShapes = SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addShape),
-                SKAction.wait(forDuration: 1.0)
+                SKAction.wait(forDuration: waitDuration)
             ])
         )
         let sequence = SKAction.sequence([fadeIn, fadeOut, addShapes])
@@ -82,36 +95,59 @@ class GameScene: SKScene {
     
     func addShape() {
         counter+=1
-
+        let chance = rand.randomElement()
         var colors: UIColor? = nil
         var shapes: String? = nil
         var numbers: String? = nil
-        if difficulty == 0 {
+        
+        switch difficulty {
+        case 0:
             colors = UIColor.black
             shapes = ColoShape.shapes.randomElement()!
             numbers = ""
-        } else if difficulty == 1 {
+            //33% chance of target shape
+            if counter % 2 == 0 && chance == 1 {
+                shapes = targetShape
+            }
+            if badCounter == 5 {
+                shapes = targetShape
+            }
+        case 1:
             colors = ColoShape.colors.randomElement()!
             shapes = ColoShape.shapes.randomElement()!
             numbers = ""
-        } else if difficulty == 2 {
+            if counter % 2 == 0 && chance == 1 {
+                shapes = targetShape
+            } else if counter % 3 == 0 && chance == 1 {
+                colors = targetColor
+            }
+            if badCounter == 5 {
+                switch chance {
+                case 1:
+                    shapes = targetShape
+                case 2:
+                    colors = targetColor
+                case 3:
+                    shapes = targetShape
+                    colors = targetColor
+                default:
+                    shapes = targetShape
+                    colors = targetColor
+                }
+            }
+        case 2:
             colors = ColoShape.colors.randomElement()!
             shapes = ColoShape.shapes.randomElement()!
             numbers = ColoShape.numbers.randomElement()!
+        default:
+            gameOver()
         }
         
-//        if counter % 2 == 0 && rand.randomElement() == 1 {
-//            shapes = targetShape!
-//        } else if counter % 3 == 0 && rand.randomElement() == 2 {
-//            colors = targetColor!
-//        } else if difficulty == 0 && counter % 2 == 0 && rand.randomElement() == 3 {
-//            shapes = targetShape!
-//        }
-//        if counter == 5 {
-//            moveSpeed-=0.2
-//        } else if counter == 10 {
-//            moveSpeed-=0.2
-//        }
+        if counter == 5 {
+            moveSpeed*=0.95
+        } else if counter == 10 {
+            moveSpeed*=0.95
+        }
         
         let shape = makeShape(shape: shapes!, color: colors!, number: numbers!)
         shape.isUserInteractionEnabled = false
@@ -120,8 +156,10 @@ class GameScene: SKScene {
         
         if targetShape == shapes || (difficulty != 0 && targetColor == colors) || (difficulty == 2 && targetNumber == numbers) {
             shape.name = "good"
+            badCounter = 0
         } else {
             shape.name = "bad"
+            badCounter+=1
         }
         addChild(shape)
         

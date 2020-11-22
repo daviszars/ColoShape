@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var menuTitle: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var difficultySegmentedControl: UISegmentedControl!
-    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton! //sound?, remove ads, restore purchases
     
     let defaults = UserDefaults.standard
     
