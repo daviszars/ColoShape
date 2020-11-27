@@ -13,12 +13,12 @@ class GameOverScene: SKScene {
     var difficulty: Int = 0
     var score: Int = 0
     override func didMove(to view: SKView) {
-        backgroundColor = SKColor.white
+        backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
         let scoreLabel = SKLabelNode(fontNamed: "Helvetica")
         scoreLabel.text = "Score: \(score)"
         scoreLabel.fontSize = 40
-        scoreLabel.fontColor = SKColor.black
+        scoreLabel.fontColor = SKColor.white
         scoreLabel.position = CGPoint(x: size.width/2, y: size.height/1.5)
         addChild(scoreLabel)
         
@@ -26,7 +26,7 @@ class GameOverScene: SKScene {
         tryAgainButton.name = "tryAgain"
         tryAgainButton.text = "Try again"
         tryAgainButton.fontSize = 30
-        tryAgainButton.fontColor = SKColor.black
+        tryAgainButton.fontColor = SKColor.white
         tryAgainButton.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(tryAgainButton)
         
@@ -34,7 +34,7 @@ class GameOverScene: SKScene {
         mainMenuButton.name = "mainMenu"
         mainMenuButton.text = "Main menu"
         mainMenuButton.fontSize = 25
-        mainMenuButton.fontColor = SKColor.black
+        mainMenuButton.fontColor = SKColor.white
         mainMenuButton.position = CGPoint(x: size.width / 2, y: size.height / 2.5)
         addChild(mainMenuButton)
         

@@ -15,49 +15,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="snO-3y-WJd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ColoShape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRD-p8-aUH">
-                                <rect key="frame" x="67.5" y="172.5" width="279" height="66"/>
+                                <rect key="frame" x="67.5" y="168" width="279" height="66"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="55"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3f-YX-B9d">
-                                <rect key="frame" x="144.5" y="573.5" width="125" height="54"/>
+                                <rect key="frame" x="144.5" y="578" width="125" height="54"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="35"/>
                                 <state key="normal" title="Settings">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z41-TV-leB">
-                                <rect key="frame" x="56" y="432.5" width="302" height="32"/>
+                                <rect key="frame" x="56" y="428" width="302" height="41"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Yv1-X2-aQv"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Easy" width="100"/>
                                     <segment title="Medium" width="100"/>
                                     <segment title="Hard" width="100"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15U-jM-3sR">
-                                <rect key="frame" x="170.5" y="363.5" width="73" height="60"/>
+                                <rect key="frame" x="170.5" y="359" width="73" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Play">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Z41-TV-leB" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" id="1iP-br-4CE"/>
+                            <constraint firstItem="snO-3y-WJd" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="2b0-GG-Y2f"/>
                             <constraint firstItem="xRD-p8-aUH" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="4jc-FJ-pKb"/>
+                            <constraint firstItem="snO-3y-WJd" firstAttribute="trailing" secondItem="4qk-I5-YsI" secondAttribute="trailing" id="5Xi-Tx-0Lb"/>
                             <constraint firstItem="15U-jM-3sR" firstAttribute="top" secondItem="xRD-p8-aUH" secondAttribute="bottom" constant="125" id="GH1-og-LWD"/>
+                            <constraint firstAttribute="bottom" secondItem="snO-3y-WJd" secondAttribute="bottom" id="Ppt-o3-hPX"/>
                             <constraint firstItem="D3f-YX-B9d" firstAttribute="top" secondItem="Z41-TV-leB" secondAttribute="bottom" constant="110" id="Pwo-Xg-Sap"/>
                             <constraint firstItem="15U-jM-3sR" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="Q9B-U9-KB7"/>
                             <constraint firstItem="Z41-TV-leB" firstAttribute="top" secondItem="15U-jM-3sR" secondAttribute="bottom" constant="9" id="gjZ-FO-La4"/>
+                            <constraint firstItem="snO-3y-WJd" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="ld0-Gm-gWf"/>
                             <constraint firstItem="D3f-YX-B9d" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="q3Q-cm-iL7"/>
                             <constraint firstItem="Z41-TV-leB" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="vC2-dP-EGX"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="snO-3y-WJd" id="vTl-bY-Ej6"/>
                         <outlet property="difficultySegmentedControl" destination="Z41-TV-leB" id="cb3-CZ-uZg"/>
                         <outlet property="menuTitle" destination="xRD-p8-aUH" id="OH5-Hv-Btm"/>
                         <outlet property="playButton" destination="15U-jM-3sR" id="nwA-0z-49h"/>

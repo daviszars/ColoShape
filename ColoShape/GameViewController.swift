@@ -8,9 +8,11 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import SwiftyGif
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var menuTitle: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var difficultySegmentedControl: UISegmentedControl!
@@ -20,6 +22,12 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        do {
+            try backgroundImageView.setGifImage(UIImage(gifName: "giphy.gif"))
+        } catch {
+            print(error)
+        }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(playButtonPressed))
         playButton.addGestureRecognizer(tap)
@@ -32,6 +40,7 @@ class GameViewController: UIViewController {
     }
     
     @objc func playButtonPressed(sender: UITapGestureRecognizer? = nil) {
+        backgroundImageView.removeFromSuperview()
         menuTitle.removeFromSuperview()
         playButton.removeFromSuperview()
         difficultySegmentedControl.removeFromSuperview()

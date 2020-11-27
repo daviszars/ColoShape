@@ -41,7 +41,7 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        backgroundColor = SKColor.white
+        backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
         scoreLabel.text = ("Score: \(score)")
         scoreLabel.fontSize = 20
@@ -50,7 +50,7 @@ class GameScene: SKScene {
         addChild(scoreLabel)
         
         if difficulty == 0 {
-            targetColor = UIColor.black
+            targetColor = UIColor.lightGray
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ""
         } else if difficulty == 1 {
@@ -102,7 +102,7 @@ class GameScene: SKScene {
         
         switch difficulty {
         case 0:
-            colors = UIColor.black
+            colors = UIColor.lightGray
             shapes = ColoShape.shapes.randomElement()!
             numbers = ""
             //33% chance of target shape
@@ -140,7 +140,8 @@ class GameScene: SKScene {
             shapes = ColoShape.shapes.randomElement()!
             numbers = ColoShape.numbers.randomElement()!
         default:
-            gameOver()
+            let tempNode: SKNode? = nil
+            gameOver(node: tempNode!)
         }
         
         if counter == 5 {
@@ -177,7 +178,7 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         if case let shape as SKSpriteNode = self.childNode(withName: "good") {
             if shape.position.y <= shape.size.height/2 {
-                self.gameOver()
+                self.gameOver(node: shape)
             }
         }
     }
@@ -190,17 +191,20 @@ class GameScene: SKScene {
                 score += 1
                 scoreLabel.text = "Score: \(score)"
             } else if atPoint(location).name == "bad" {
-                gameOver()
+                gameOver(node: atPoint(location))
             }
         }
     }
     
-    func gameOver() {
-        let reveal = SKTransition.fade(withDuration: 0.0)
-        let gameOverScene = GameOverScene(size: view!.bounds.size)
-        gameOverScene.difficulty = self.difficulty
-        gameOverScene.score = self.score
-        self.view?.presentScene(gameOverScene, transition: reveal)
+    func gameOver(node: SKNode) {
+        
+        node.run(SKAction.fadeOut(withDuration: 0.1)) {
+            let reveal = SKTransition.fade(withDuration: 0.5)
+            let gameOverScene = GameOverScene(size: self.view!.bounds.size)
+            gameOverScene.difficulty = self.difficulty
+            gameOverScene.score = self.score
+            self.view?.presentScene(gameOverScene, transition: reveal)
+        }
     }
     
 }

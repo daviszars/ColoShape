@@ -3,26 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2921953825409F3C00715FAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2921953725409F3C00715FAB /* AppDelegate.swift */; };
-		2921953A25409F3C00715FAB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2921953925409F3C00715FAB /* GameScene.sks */; };
-		2921953C25409F3C00715FAB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2921953B25409F3C00715FAB /* Actions.sks */; };
 		2921953E25409F3C00715FAB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2921953D25409F3C00715FAB /* GameScene.swift */; };
 		2921954025409F3C00715FAB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2921953F25409F3C00715FAB /* GameViewController.swift */; };
 		2921954325409F3C00715FAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2921954125409F3C00715FAB /* Main.storyboard */; };
 		2921954525409F4000715FAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2921954425409F4000715FAB /* Assets.xcassets */; };
 		29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900B25473B2C00D5AE94 /* ColoShape.swift */; };
 		29C790102547591800D5AE94 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900F2547591800D5AE94 /* GameOverScene.swift */; };
+		29EC486625711264007FE4FB /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 29EC486525711264007FE4FB /* SwiftyGif */; };
+		29EC486C25713050007FE4FB /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 29EC486B25713050007FE4FB /* giphy.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2921953425409F3C00715FAB /* ColoShape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColoShape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2921953725409F3C00715FAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2921953925409F3C00715FAB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		2921953B25409F3C00715FAB /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		2921953D25409F3C00715FAB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		2921953F25409F3C00715FAB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2921954225409F3C00715FAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -30,6 +28,7 @@
 		2921954625409F4000715FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29C7900B25473B2C00D5AE94 /* ColoShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoShape.swift; sourceTree = "<group>"; };
 		29C7900F2547591800D5AE94 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		29EC486B25713050007FE4FB /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29EC486625711264007FE4FB /* SwiftyGif in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,9 +62,8 @@
 		2921953625409F3C00715FAB /* ColoShape */ = {
 			isa = PBXGroup;
 			children = (
+				29EC486A25712FD6007FE4FB /* gif */,
 				2921953725409F3C00715FAB /* AppDelegate.swift */,
-				2921953925409F3C00715FAB /* GameScene.sks */,
-				2921953B25409F3C00715FAB /* Actions.sks */,
 				29C7900B25473B2C00D5AE94 /* ColoShape.swift */,
 				29C7900F2547591800D5AE94 /* GameOverScene.swift */,
 				2921953D25409F3C00715FAB /* GameScene.swift */,
@@ -72,8 +71,16 @@
 				2921954125409F3C00715FAB /* Main.storyboard */,
 				2921954425409F4000715FAB /* Assets.xcassets */,
 				2921954625409F4000715FAB /* Info.plist */,
+				29EC486B25713050007FE4FB /* giphy.gif */,
 			);
 			path = ColoShape;
+			sourceTree = "<group>";
+		};
+		29EC486A25712FD6007FE4FB /* gif */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = gif;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,6 +99,9 @@
 			dependencies = (
 			);
 			name = ColoShape;
+			packageProductDependencies = (
+				29EC486525711264007FE4FB /* SwiftyGif */,
+			);
 			productName = ColoShape;
 			productReference = 2921953425409F3C00715FAB /* ColoShape.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +129,9 @@
 				Base,
 			);
 			mainGroup = 2921952B25409F3C00715FAB;
+			packageReferences = (
+				29EC486425711264007FE4FB /* XCRemoteSwiftPackageReference "SwiftyGif" */,
+			);
 			productRefGroup = 2921953525409F3C00715FAB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,9 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2921954325409F3C00715FAB /* Main.storyboard in Resources */,
-				2921953A25409F3C00715FAB /* GameScene.sks in Resources */,
+				29EC486C25713050007FE4FB /* giphy.gif in Resources */,
 				2921954525409F4000715FAB /* Assets.xcassets in Resources */,
-				2921953C25409F3C00715FAB /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +359,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		29EC486425711264007FE4FB /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kirualex/SwiftyGif.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		29EC486525711264007FE4FB /* SwiftyGif */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29EC486425711264007FE4FB /* XCRemoteSwiftPackageReference "SwiftyGif" */;
+			productName = SwiftyGif;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2921952C25409F3C00715FAB /* Project object */;
 }
