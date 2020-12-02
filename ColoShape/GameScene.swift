@@ -20,7 +20,9 @@ class GameScene: SKScene {
     var badCounter: Int = 0
     let rand: [Int] = [1, 2, 3]
     var moveSpeed: Float = 4.0
+    var testMode: Bool = false
     
+    //MARK: makeShape()
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
         let shapeConfig = UIImage.SymbolConfiguration(pointSize: 35, weight: .black, scale: .large)
         let image = UIImage(systemName: shape, withConfiguration: shapeConfig)!.withTintColor(color)
@@ -40,6 +42,7 @@ class GameScene: SKScene {
         return targetColoShape
     }
     
+    //MARK: didMove(to view)
     override func didMove(to view: SKView) {
         backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
@@ -93,6 +96,7 @@ class GameScene: SKScene {
         targetColoShape.run(sequence)
     }
     
+    //MARK: addShape()
     func addShape() {
         counter+=1
         let chance = rand.randomElement()
@@ -152,7 +156,8 @@ class GameScene: SKScene {
         
         let shape = makeShape(shape: shapes!, color: colors!, number: numbers!)
         shape.isUserInteractionEnabled = false
-        let startingX = [size.width * 0.2, size.width * 0.3, size.width * 0.4, size.width * 0.5, size.width * 0.6, size.width * 0.7, size.width * 0.8].randomElement()
+        //._. I know this is bad vvv
+        let startingX = [size.width * 0.2, size.width * 0.25, size.width * 0.3, size.width * 0.35, size.width * 0.4, size.width * 0.45, size.width * 0.5, size.width * 0.55, size.width * 0.6, size.width * 0.65, size.width * 0.7, size.width * 0.75, size.width * 0.8].randomElement()
         shape.position = CGPoint(x: startingX!, y: size.height + shape.size.height/2)
         
         if targetShape == shapes || (difficulty != 0 && targetColor == colors) || (difficulty == 2 && targetNumber == numbers) {
@@ -175,27 +180,34 @@ class GameScene: SKScene {
         //        }
     }
     
+    //MARK: update()
     override func update(_ currentTime: TimeInterval) {
-        if case let shape as SKSpriteNode = self.childNode(withName: "good") {
-            if shape.position.y <= shape.size.height/2 {
-                self.gameOver(node: shape)
+        if testMode == false {
+            if case let shape as SKSpriteNode = self.childNode(withName: "good") {
+                if shape.position.y <= shape.size.height/2 {
+                    self.gameOver(node: shape)
+                }
             }
         }
     }
     
+    //MARK: touchesBegan()
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            let location = touch.location(in: self)
-            if (atPoint(location).name == "good") {
-                atPoint(location).removeFromParent()
-                score += 1
-                scoreLabel.text = "Score: \(score)"
-            } else if atPoint(location).name == "bad" {
-                gameOver(node: atPoint(location))
+            if testMode == false {
+                let location = touch.location(in: self)
+                if (atPoint(location).name == "good") {
+                    atPoint(location).removeFromParent()
+                    score += 1
+                    scoreLabel.text = "Score: \(score)"
+                } else if atPoint(location).name == "bad" {
+                    gameOver(node: atPoint(location))
+                }
             }
         }
     }
     
+    //MARK: gameOver()
     func gameOver(node: SKNode) {
         
         node.run(SKAction.fadeOut(withDuration: 0.1)) {

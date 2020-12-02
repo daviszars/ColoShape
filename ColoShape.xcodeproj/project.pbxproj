@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,8 +14,7 @@
 		2921954525409F4000715FAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2921954425409F4000715FAB /* Assets.xcassets */; };
 		29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900B25473B2C00D5AE94 /* ColoShape.swift */; };
 		29C790102547591800D5AE94 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900F2547591800D5AE94 /* GameOverScene.swift */; };
-		29EC486625711264007FE4FB /* SwiftyGif in Frameworks */ = {isa = PBXBuildFile; productRef = 29EC486525711264007FE4FB /* SwiftyGif */; };
-		29EC486C25713050007FE4FB /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 29EC486B25713050007FE4FB /* giphy.gif */; };
+		29EC48732571A077007FE4FB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EC48722571A077007FE4FB /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +27,7 @@
 		2921954625409F4000715FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29C7900B25473B2C00D5AE94 /* ColoShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoShape.swift; sourceTree = "<group>"; };
 		29C7900F2547591800D5AE94 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
-		29EC486B25713050007FE4FB /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
+		29EC48722571A077007FE4FB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29EC486625711264007FE4FB /* SwiftyGif in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,25 +60,17 @@
 		2921953625409F3C00715FAB /* ColoShape */ = {
 			isa = PBXGroup;
 			children = (
-				29EC486A25712FD6007FE4FB /* gif */,
 				2921953725409F3C00715FAB /* AppDelegate.swift */,
 				29C7900B25473B2C00D5AE94 /* ColoShape.swift */,
 				29C7900F2547591800D5AE94 /* GameOverScene.swift */,
 				2921953D25409F3C00715FAB /* GameScene.swift */,
 				2921953F25409F3C00715FAB /* GameViewController.swift */,
 				2921954125409F3C00715FAB /* Main.storyboard */,
+				29EC48722571A077007FE4FB /* SettingsViewController.swift */,
 				2921954425409F4000715FAB /* Assets.xcassets */,
 				2921954625409F4000715FAB /* Info.plist */,
-				29EC486B25713050007FE4FB /* giphy.gif */,
 			);
 			path = ColoShape;
-			sourceTree = "<group>";
-		};
-		29EC486A25712FD6007FE4FB /* gif */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = gif;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,7 +90,6 @@
 			);
 			name = ColoShape;
 			packageProductDependencies = (
-				29EC486525711264007FE4FB /* SwiftyGif */,
 			);
 			productName = ColoShape;
 			productReference = 2921953425409F3C00715FAB /* ColoShape.app */;
@@ -130,7 +119,6 @@
 			);
 			mainGroup = 2921952B25409F3C00715FAB;
 			packageReferences = (
-				29EC486425711264007FE4FB /* XCRemoteSwiftPackageReference "SwiftyGif" */,
 			);
 			productRefGroup = 2921953525409F3C00715FAB /* Products */;
 			projectDirPath = "";
@@ -147,7 +135,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2921954325409F3C00715FAB /* Main.storyboard in Resources */,
-				29EC486C25713050007FE4FB /* giphy.gif in Resources */,
 				2921954525409F4000715FAB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +151,7 @@
 				2921953E25409F3C00715FAB /* GameScene.swift in Sources */,
 				2921954025409F3C00715FAB /* GameViewController.swift in Sources */,
 				2921953825409F3C00715FAB /* AppDelegate.swift in Sources */,
+				29EC48732571A077007FE4FB /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3SXFHNCTW2;
 				INFOPLIST_FILE = ColoShape/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -325,7 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3SXFHNCTW2;
 				INFOPLIST_FILE = ColoShape/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -359,25 +347,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		29EC486425711264007FE4FB /* XCRemoteSwiftPackageReference "SwiftyGif" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kirualex/SwiftyGif.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.3.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		29EC486525711264007FE4FB /* SwiftyGif */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 29EC486425711264007FE4FB /* XCRemoteSwiftPackageReference "SwiftyGif" */;
-			productName = SwiftyGif;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2921952C25409F3C00715FAB /* Project object */;
 }

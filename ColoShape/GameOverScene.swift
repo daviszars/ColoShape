@@ -12,8 +12,27 @@ class GameOverScene: SKScene {
     
     var difficulty: Int = 0
     var score: Int = 0
+    let defaults = UserDefaults.standard
+    
     override func didMove(to view: SKView) {
         backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+        
+        switch difficulty {
+        case 0:
+            if score > defaults.integer(forKey: "EasyHS") {
+                defaults.set(score, forKey: "EasyHS")
+            }
+        case 1:
+            if score > defaults.integer(forKey: "MediumHS") {
+                defaults.set(score, forKey: "MediumHS")
+            }
+        case 2:
+            if score > defaults.integer(forKey: "HardHS") {
+                defaults.set(score, forKey: "HardHS")
+            }
+        default:
+            print("??")
+        }
         
         let scoreLabel = SKLabelNode(fontNamed: "Helvetica")
         scoreLabel.text = "Score: \(score)"
@@ -56,7 +75,7 @@ class GameOverScene: SKScene {
                 ]))
             } else if (atPoint(location).name == "mainMenu") {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "GameViewController")
+                let vc = storyboard.instantiateViewController(withIdentifier: "NavigationController")
                 vc.view.frame = (self.view?.frame)!
                 vc.view.layoutIfNeeded()
                 UIView.transition(with: self.view!, duration: 0.0, options: .transitionCrossDissolve, animations:
