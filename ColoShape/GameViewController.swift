@@ -8,16 +8,17 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import BetterSegmentedControl
 
 class GameViewController: UIViewController {
-
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var menuTitleLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var difficultySegmentedControl: UISegmentedControl!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         self.navigationController?.isNavigationBarHidden = true
@@ -27,8 +28,6 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         if let firstOpen = defaults.object(forKey: "FirstOpen") as? Date {
             // This is NOT the first launch
@@ -59,15 +58,15 @@ class GameViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(playButtonPressed))
         playButton.addGestureRecognizer(tap)
         
-//        let scene = GameScene(size: view.bounds.size)
-//        scene.difficulty = difficultySegmentedControl.selectedSegmentIndex
-//        scene.testMode = true
-//        let skView = view as! SKView
-//        skView.showsFPS = true
-//        skView.showsNodeCount = true
-//        skView.ignoresSiblingOrder = true
-//        scene.scaleMode = .resizeFill
-//        skView.presentScene(scene)
+        //        let scene = GameScene(size: view.bounds.size)
+        //        scene.difficulty = difficultySegmentedControl.selectedSegmentIndex
+        //        scene.testMode = true
+        //        let skView = view as! SKView
+        //        skView.showsFPS = true
+        //        skView.showsNodeCount = true
+        //        skView.ignoresSiblingOrder = true
+        //        scene.scaleMode = .resizeFill
+        //        skView.presentScene(scene)
         launchGameScene(testMode: true, difficulty: difficultySegmentedControl.selectedSegmentIndex)
     }
     
@@ -112,14 +111,14 @@ class GameViewController: UIViewController {
         highScoreLabel.removeFromSuperview()
         defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
         
-//        let scene = GameScene(size: view.bounds.size)
-//        scene.difficulty = difficultySegmentedControl.selectedSegmentIndex
-//        let skView = view as! SKView
-//        skView.showsFPS = true
-//        skView.showsNodeCount = true
-//        skView.ignoresSiblingOrder = true
-//        scene.scaleMode = .resizeFill
-//        skView.presentScene(scene)
+        //        let scene = GameScene(size: view.bounds.size)
+        //        scene.difficulty = difficultySegmentedControl.selectedSegmentIndex
+        //        let skView = view as! SKView
+        //        skView.showsFPS = true
+        //        skView.showsNodeCount = true
+        //        skView.ignoresSiblingOrder = true
+        //        scene.scaleMode = .resizeFill
+        //        skView.presentScene(scene)
         launchGameScene(testMode: false, difficulty: difficultySegmentedControl.selectedSegmentIndex)
     }
     

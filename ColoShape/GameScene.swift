@@ -21,6 +21,7 @@ class GameScene: SKScene {
     let rand: [Int] = [1, 2, 3]
     var moveSpeed: Float = 4.0
     var testMode: Bool = false
+    let defaults = UserDefaults.standard
     
     //MARK: makeShape()
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
@@ -197,6 +198,10 @@ class GameScene: SKScene {
             if testMode == false {
                 let location = touch.location(in: self)
                 if (atPoint(location).name == "good") {
+                    if defaults.bool(forKey: "Vibration") {
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                    }
                     atPoint(location).removeFromParent()
                     score += 1
                     scoreLabel.text = "Score: \(score)"
@@ -209,8 +214,11 @@ class GameScene: SKScene {
     
     //MARK: gameOver()
     func gameOver(node: SKNode) {
-        
-        node.run(SKAction.fadeOut(withDuration: 0.1)) {
+        node.run(SKAction.fadeOut(withDuration: 0.0)) {
+            if self.defaults.bool(forKey: "Vibration") {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.error)
+            }
             let reveal = SKTransition.fade(withDuration: 0.5)
             let gameOverScene = GameOverScene(size: self.view!.bounds.size)
             gameOverScene.difficulty = self.difficulty
