@@ -7,54 +7,66 @@
 
 import SpriteKit
 import GameplayKit
+import SwiftConfettiView
 
 class GameOverScene: SKScene {
     
     var difficulty: Int = 0
     var score: Int = 0
     let defaults = UserDefaults.standard
+    var confettiView: SwiftConfettiView? = nil
     
     override func didMove(to view: SKView) {
         backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
+        
+        confettiView = SwiftConfettiView(frame: self.view!.bounds)
+        self.view!.addSubview(confettiView!)
         
         switch difficulty {
         case 0:
             if score > defaults.integer(forKey: "EasyHS") {
                 defaults.set(score, forKey: "EasyHS")
+                confettiView!.startConfetti()
             }
         case 1:
             if score > defaults.integer(forKey: "MediumHS") {
                 defaults.set(score, forKey: "MediumHS")
+                confettiView!.startConfetti()
             }
         case 2:
             if score > defaults.integer(forKey: "HardHS") {
                 defaults.set(score, forKey: "HardHS")
+                confettiView!.startConfetti()
             }
         default:
             print("??")
         }
         
         let scoreLabel = SKLabelNode(fontNamed: "Helvetica")
-        scoreLabel.text = "Score: \(score)"
-        scoreLabel.fontSize = 40
+        if confettiView!.isActive() {
+            scoreLabel.text = "NEW High Score: \(score)"
+        } else {
+            scoreLabel.text = "Score: \(score)"
+        }
+        scoreLabel.fontSize = 25
         scoreLabel.fontColor = SKColor.white
-        scoreLabel.position = CGPoint(x: size.width/2, y: size.height/1.5)
+        scoreLabel.position = CGPoint(x: size.width / 2, y: size.height / 1.5)
         addChild(scoreLabel)
         
         let tryAgainButton = SKLabelNode(fontNamed: "Helvetica")
         tryAgainButton.name = "tryAgain"
-        tryAgainButton.text = "Try again"
-        tryAgainButton.fontSize = 30
+        tryAgainButton.text = "Try Again"
+        tryAgainButton.fontSize = 23
         tryAgainButton.fontColor = SKColor.white
         tryAgainButton.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(tryAgainButton)
         
         let mainMenuButton = SKLabelNode(fontNamed: "Helvetica")
         mainMenuButton.name = "mainMenu"
-        mainMenuButton.text = "Main menu"
-        mainMenuButton.fontSize = 25
+        mainMenuButton.text = "Main Menu"
+        mainMenuButton.fontSize = 18
         mainMenuButton.fontColor = SKColor.white
-        mainMenuButton.position = CGPoint(x: size.width / 2, y: size.height / 2.5)
+        mainMenuButton.position = CGPoint(x: size.width / 2, y: size.height / 2.6)
         addChild(mainMenuButton)
         
     }
@@ -63,6 +75,7 @@ class GameOverScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             if (atPoint(location).name == "tryAgain") {
+                confettiView?.stopConfetti()
                 run(SKAction.sequence([
                     SKAction.wait(forDuration: 0.1),
                     SKAction.run() { [weak self] in

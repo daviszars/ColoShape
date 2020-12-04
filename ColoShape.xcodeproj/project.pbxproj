@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,10 @@
 		2921954525409F4000715FAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2921954425409F4000715FAB /* Assets.xcassets */; };
 		29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900B25473B2C00D5AE94 /* ColoShape.swift */; };
 		29C790102547591800D5AE94 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900F2547591800D5AE94 /* GameOverScene.swift */; };
+		29DE6743257ADC6B002B02B7 /* gameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 29DE6741257ADC6B002B02B7 /* gameOver.m4a */; };
+		29DE6747257ADC9C002B02B7 /* impact.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 29DE6746257ADC9C002B02B7 /* impact.m4a */; };
 		29EC48732571A077007FE4FB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EC48722571A077007FE4FB /* SettingsViewController.swift */; };
+		DB2031E34F2E9AADB2D80643 /* Pods_ColoShape.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BE0698134241A38D593D433 /* Pods_ColoShape.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +30,12 @@
 		2921954625409F4000715FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29C7900B25473B2C00D5AE94 /* ColoShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoShape.swift; sourceTree = "<group>"; };
 		29C7900F2547591800D5AE94 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		29DE6741257ADC6B002B02B7 /* gameOver.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameOver.m4a; sourceTree = "<group>"; };
+		29DE6746257ADC9C002B02B7 /* impact.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.m4a; sourceTree = "<group>"; };
 		29EC48722571A077007FE4FB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		2BE0698134241A38D593D433 /* Pods_ColoShape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColoShape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A988D61C7A892A9AE30529B0 /* Pods-ColoShape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColoShape.debug.xcconfig"; path = "Target Support Files/Pods-ColoShape/Pods-ColoShape.debug.xcconfig"; sourceTree = "<group>"; };
+		E76BDC78EE2B8CCA2FD85BB4 /* Pods-ColoShape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColoShape.release.xcconfig"; path = "Target Support Files/Pods-ColoShape/Pods-ColoShape.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB2031E34F2E9AADB2D80643 /* Pods_ColoShape.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +55,8 @@
 			children = (
 				2921953625409F3C00715FAB /* ColoShape */,
 				2921953525409F3C00715FAB /* Products */,
+				9E9120302E5FA503847D9D18 /* Pods */,
+				8EFD32F15A6A77B2989432E5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,8 +80,27 @@
 				29EC48722571A077007FE4FB /* SettingsViewController.swift */,
 				2921954425409F4000715FAB /* Assets.xcassets */,
 				2921954625409F4000715FAB /* Info.plist */,
+				29DE6741257ADC6B002B02B7 /* gameOver.m4a */,
+				29DE6746257ADC9C002B02B7 /* impact.m4a */,
 			);
 			path = ColoShape;
+			sourceTree = "<group>";
+		};
+		8EFD32F15A6A77B2989432E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BE0698134241A38D593D433 /* Pods_ColoShape.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9E9120302E5FA503847D9D18 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A988D61C7A892A9AE30529B0 /* Pods-ColoShape.debug.xcconfig */,
+				E76BDC78EE2B8CCA2FD85BB4 /* Pods-ColoShape.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,17 +110,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2921954925409F4000715FAB /* Build configuration list for PBXNativeTarget "ColoShape" */;
 			buildPhases = (
+				0747B8910B2FDE3E2747E477 /* [CP] Check Pods Manifest.lock */,
 				2921953025409F3C00715FAB /* Sources */,
 				2921953125409F3C00715FAB /* Frameworks */,
 				2921953225409F3C00715FAB /* Resources */,
+				D63876F3100744838FF13D30 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ColoShape;
-			packageProductDependencies = (
-			);
 			productName = ColoShape;
 			productReference = 2921953425409F3C00715FAB /* ColoShape.app */;
 			productType = "com.apple.product-type.application";
@@ -118,8 +148,6 @@
 				Base,
 			);
 			mainGroup = 2921952B25409F3C00715FAB;
-			packageReferences = (
-			);
 			productRefGroup = 2921953525409F3C00715FAB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,12 +162,56 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DE6747257ADC9C002B02B7 /* impact.m4a in Resources */,
 				2921954325409F3C00715FAB /* Main.storyboard in Resources */,
+				29DE6743257ADC6B002B02B7 /* gameOver.m4a in Resources */,
 				2921954525409F4000715FAB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0747B8910B2FDE3E2747E477 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ColoShape-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D63876F3100744838FF13D30 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ColoShape/Pods-ColoShape-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ColoShape/Pods-ColoShape-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ColoShape/Pods-ColoShape-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2921953025409F3C00715FAB /* Sources */ = {
@@ -287,6 +359,7 @@
 		};
 		2921954A25409F4000715FAB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A988D61C7A892A9AE30529B0 /* Pods-ColoShape.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -307,6 +380,7 @@
 		};
 		2921954B25409F4000715FAB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E76BDC78EE2B8CCA2FD85BB4 /* Pods-ColoShape.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

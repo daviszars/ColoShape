@@ -4,11 +4,15 @@
 //
 //  Created by Davis Zarins on 21/10/2020.
 //
+//
+//  Roses are red,
+//  Violets are blue
+//  Unexpected '{'
+//  on line 32
 
 import UIKit
 import SpriteKit
 import GameplayKit
-import BetterSegmentedControl
 
 class GameViewController: UIViewController {
     
@@ -33,6 +37,10 @@ class GameViewController: UIViewController {
             // This is NOT the first launch
             print("The app was first opened on \(firstOpen)")
             difficultySegmentedControl.selectedSegmentIndex = defaults.integer(forKey: "Difficulty")
+            //remove later vvvvv
+            defaults.set(0, forKey: "EasyHS")
+            defaults.set(0, forKey: "MediumHS")
+            defaults.set(0, forKey: "HardHS")
         } else {
             // This is the first launch
             defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
@@ -43,6 +51,10 @@ class GameViewController: UIViewController {
             defaults.set(0, forKey: "MediumHS")
             defaults.set(0, forKey: "HardHS")
         }
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+            difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+            difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        
         
         switch difficultySegmentedControl.selectedSegmentIndex {
         case 0:

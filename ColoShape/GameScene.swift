@@ -22,15 +22,18 @@ class GameScene: SKScene {
     var moveSpeed: Float = 4.0
     var testMode: Bool = false
     let defaults = UserDefaults.standard
+    let gameOverSound = SKAction.playSoundFileNamed("gameOver.m4a", waitForCompletion: false)
+    let tickSound = SKAction.playSoundFileNamed("impact.m4a", waitForCompletion: false)
     
     //MARK: makeShape()
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
-        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 35, weight: .black, scale: .large)
+        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .large)
         let image = UIImage(systemName: shape, withConfiguration: shapeConfig)!.withTintColor(color)
         let data = image.pngData()!
         let newImage = UIImage(data:data)!
         let texture = SKTexture(image: newImage)
-        let targetColoShape = SKSpriteNode(texture: texture, size: CGSize(width: 120, height: 120))
+        let shapeSize = size.height * 0.15
+        let targetColoShape = SKSpriteNode(texture: texture, size: CGSize(width: shapeSize, height: shapeSize))
         
         let numberLabel = SKLabelNode(fontNamed: "Helvetica")
         numberLabel.text = number
@@ -45,11 +48,12 @@ class GameScene: SKScene {
     
     //MARK: didMove(to view)
     override func didMove(to view: SKView) {
+        
         backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
         scoreLabel.text = ("Score: \(score)")
         scoreLabel.fontSize = 20
-        scoreLabel.fontColor = SKColor.black
+        scoreLabel.fontColor = SKColor.lightGray
         scoreLabel.position = CGPoint(x: size.width - 50, y: size.height - 50)
         addChild(scoreLabel)
         
@@ -157,9 +161,8 @@ class GameScene: SKScene {
         
         let shape = makeShape(shape: shapes!, color: colors!, number: numbers!)
         shape.isUserInteractionEnabled = false
-        //._. I know this is bad vvv
-        let startingX = [size.width * 0.2, size.width * 0.25, size.width * 0.3, size.width * 0.35, size.width * 0.4, size.width * 0.45, size.width * 0.5, size.width * 0.55, size.width * 0.6, size.width * 0.65, size.width * 0.7, size.width * 0.75, size.width * 0.8].randomElement()
-        shape.position = CGPoint(x: startingX!, y: size.height + shape.size.height/2)
+        let startingX = CGFloat.random(in: size.width*0.15 ... size.width*0.85)
+        shape.position = CGPoint(x: startingX, y: size.height + shape.size.height/2)
         
         if targetShape == shapes || (difficulty != 0 && targetColor == colors) || (difficulty == 2 && targetNumber == numbers) {
             shape.name = "good"
@@ -170,7 +173,7 @@ class GameScene: SKScene {
         }
         addChild(shape)
         
-        let actionMove = SKAction.move(to: CGPoint(x: startingX!, y: -shape.size.height/2),
+        let actionMove = SKAction.move(to: CGPoint(x: startingX, y: -shape.size.height/2),
                                        duration: TimeInterval(CGFloat(moveSpeed)))
         let actionMoveDone = SKAction.removeFromParent()
         shape.run(SKAction.sequence([actionMove, actionMoveDone]))
@@ -202,6 +205,9 @@ class GameScene: SKScene {
                         let generator = UIImpactFeedbackGenerator(style: .light)
                         generator.impactOccurred()
                     }
+                    if defaults.bool(forKey: "Sound") {
+                        run(tickSound)
+                    }
                     atPoint(location).removeFromParent()
                     score += 1
                     scoreLabel.text = "Score: \(score)"
@@ -214,11 +220,17 @@ class GameScene: SKScene {
     
     //MARK: gameOver()
     func gameOver(node: SKNode) {
-        node.run(SKAction.fadeOut(withDuration: 0.0)) {
+        if defaults.bool(forKey: "Sound") {
+            run(gameOverSound)
+        }
+        node.run(SKAction.fadeOut(withDuration: 0.0)) { [self] in
             if self.defaults.bool(forKey: "Vibration") {
                 let generator = UINotificationFeedbackGenerator()
                 generator.notificationOccurred(.error)
             }
+//            if self.defaults.bool(forKey: "Sound") {
+//                run(gameOverSound)
+//            }
             let reveal = SKTransition.fade(withDuration: 0.5)
             let gameOverScene = GameOverScene(size: self.view!.bounds.size)
             gameOverScene.difficulty = self.difficulty
