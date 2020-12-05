@@ -19,7 +19,7 @@ class GameScene: SKScene {
     var counter: Int = 0
     var badCounter: Int = 0
     let rand: [Int] = [1, 2, 3]
-    var moveSpeed: Float = 4.0
+    var moveSpeed: Float = 3.0
     var testMode: Bool = false
     let defaults = UserDefaults.standard
     let gameOverSound = SKAction.playSoundFileNamed("gameOver.m4a", waitForCompletion: false)
@@ -27,17 +27,17 @@ class GameScene: SKScene {
     
     //MARK: makeShape()
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
-        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .large)
+        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)
         let image = UIImage(systemName: shape, withConfiguration: shapeConfig)!.withTintColor(color)
         let data = image.pngData()!
         let newImage = UIImage(data:data)!
         let texture = SKTexture(image: newImage)
-        let shapeSize = size.height * 0.15
+        let shapeSize = size.height * 0.12
         let targetColoShape = SKSpriteNode(texture: texture, size: CGSize(width: shapeSize, height: shapeSize))
         
         let numberLabel = SKLabelNode(fontNamed: "Helvetica")
         numberLabel.text = number
-        numberLabel.fontSize = 35
+        numberLabel.fontSize = 34
         numberLabel.fontColor = color
         numberLabel.position = CGPoint(x: -3, y: -12)
         numberLabel.zPosition = -1
@@ -57,37 +57,32 @@ class GameScene: SKScene {
         scoreLabel.position = CGPoint(x: size.width - 50, y: size.height - 50)
         addChild(scoreLabel)
         
-        if difficulty == 0 {
+        var waitDuration: Double
+        switch difficulty {
+        case 0:
+            waitDuration = 0.5
+            moveSpeed = 2.5
             targetColor = UIColor.lightGray
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ""
-        } else if difficulty == 1 {
+        case 1:
+            waitDuration = 0.6
+            moveSpeed = 2.7
             targetColor = ColoShape.colors.randomElement()
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ""
-        } else if difficulty == 2 {
+        default:
+            waitDuration = 0.7
+            moveSpeed = 3.0
             targetColor = ColoShape.colors.randomElement()
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ColoShape.numbers.randomElement()
         }
         
-        
         let targetColoShape = makeShape(shape: targetShape!, color: targetColor!, number: targetNumber!)
         targetColoShape.position = CGPoint(x: size.width / 2, y: size.height / 2)
         targetColoShape.alpha = 0.0
         addChild(targetColoShape)
-        
-        var waitDuration: Double
-        switch difficulty {
-        case 0:
-            waitDuration = 0.7
-        case 1:
-            waitDuration = 0.8
-        case 2:
-            waitDuration = 0.9
-        default:
-            waitDuration = 0.8
-        }
         
         let fadeIn = SKAction.fadeIn(withDuration: 1.0)
         let fadeOut = SKAction.fadeOut(withDuration: 1.0)
@@ -111,6 +106,9 @@ class GameScene: SKScene {
         
         switch difficulty {
         case 0:
+            if counter > 5 && counter < 20 {
+                moveSpeed*=0.98
+            }
             colors = UIColor.lightGray
             shapes = ColoShape.shapes.randomElement()!
             numbers = ""
@@ -118,10 +116,13 @@ class GameScene: SKScene {
             if counter % 2 == 0 && chance == 1 {
                 shapes = targetShape
             }
-            if badCounter == 5 {
+            if badCounter == 4 {
                 shapes = targetShape
             }
         case 1:
+            if counter > 5 && counter < 20 {
+                moveSpeed*=0.98
+            }
             colors = ColoShape.colors.randomElement()!
             shapes = ColoShape.shapes.randomElement()!
             numbers = ""
@@ -130,33 +131,34 @@ class GameScene: SKScene {
             } else if counter % 3 == 0 && chance == 1 {
                 colors = targetColor
             }
-            if badCounter == 5 {
+            if badCounter == 4 {
                 switch chance {
                 case 1:
                     shapes = targetShape
                 case 2:
-                    colors = targetColor
-                case 3:
-                    shapes = targetShape
                     colors = targetColor
                 default:
                     shapes = targetShape
                     colors = targetColor
                 }
             }
-        case 2:
+        default:
+            if counter > 5 && counter < 20 {
+                moveSpeed*=0.98
+            }
             colors = ColoShape.colors.randomElement()!
             shapes = ColoShape.shapes.randomElement()!
             numbers = ColoShape.numbers.randomElement()!
-        default:
-            let tempNode: SKNode? = nil
-            gameOver(node: tempNode!)
-        }
-        
-        if counter == 5 {
-            moveSpeed*=0.95
-        } else if counter == 10 {
-            moveSpeed*=0.95
+            if badCounter == 4 {
+                switch chance {
+                case 1:
+                    shapes = targetShape
+                case 2:
+                    colors = targetColor
+                default:
+                    numbers = targetNumber
+                }
+            }
         }
         
         let shape = makeShape(shape: shapes!, color: colors!, number: numbers!)
@@ -177,11 +179,6 @@ class GameScene: SKScene {
                                        duration: TimeInterval(CGFloat(moveSpeed)))
         let actionMoveDone = SKAction.removeFromParent()
         shape.run(SKAction.sequence([actionMove, actionMoveDone]))
-        //        {
-        //            if shape.name == "good"{
-        //                self.gameOver()
-        //            }
-        //        }
     }
     
     //MARK: update()
@@ -223,20 +220,15 @@ class GameScene: SKScene {
         if defaults.bool(forKey: "Sound") {
             run(gameOverSound)
         }
-        node.run(SKAction.fadeOut(withDuration: 0.0)) { [self] in
-            if self.defaults.bool(forKey: "Vibration") {
-                let generator = UINotificationFeedbackGenerator()
-                generator.notificationOccurred(.error)
-            }
-//            if self.defaults.bool(forKey: "Sound") {
-//                run(gameOverSound)
-//            }
-            let reveal = SKTransition.fade(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.view!.bounds.size)
-            gameOverScene.difficulty = self.difficulty
-            gameOverScene.score = self.score
-            self.view?.presentScene(gameOverScene, transition: reveal)
+        if defaults.bool(forKey: "Vibration") {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
         }
+        let reveal = SKTransition.fade(withDuration: 0.5)
+        let gameOverScene = GameOverScene(size: self.view!.bounds.size)
+        gameOverScene.difficulty = self.difficulty
+        gameOverScene.score = self.score
+        self.view?.presentScene(gameOverScene, transition: reveal)
     }
     
 }

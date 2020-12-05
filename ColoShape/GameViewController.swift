@@ -4,11 +4,6 @@
 //
 //  Created by Davis Zarins on 21/10/2020.
 //
-//
-//  Roses are red,
-//  Violets are blue
-//  Unexpected '{'
-//  on line 32
 
 import UIKit
 import SpriteKit
@@ -52,8 +47,8 @@ class GameViewController: UIViewController {
             defaults.set(0, forKey: "HardHS")
         }
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-            difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
-            difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
         
         
         switch difficultySegmentedControl.selectedSegmentIndex {
@@ -70,15 +65,6 @@ class GameViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(playButtonPressed))
         playButton.addGestureRecognizer(tap)
         
-        //        let scene = GameScene(size: view.bounds.size)
-        //        scene.difficulty = difficultySegmentedControl.selectedSegmentIndex
-        //        scene.testMode = true
-        //        let skView = view as! SKView
-        //        skView.showsFPS = true
-        //        skView.showsNodeCount = true
-        //        skView.ignoresSiblingOrder = true
-        //        scene.scaleMode = .resizeFill
-        //        skView.presentScene(scene)
         launchGameScene(testMode: true, difficulty: difficultySegmentedControl.selectedSegmentIndex)
     }
     
@@ -122,15 +108,6 @@ class GameViewController: UIViewController {
         settingsButton.removeFromSuperview()
         highScoreLabel.removeFromSuperview()
         defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
-        
-        //        let scene = GameScene(size: view.bounds.size)
-        //        scene.difficulty = difficultySegmentedControl.selectedSegmentIndex
-        //        let skView = view as! SKView
-        //        skView.showsFPS = true
-        //        skView.showsNodeCount = true
-        //        skView.ignoresSiblingOrder = true
-        //        scene.scaleMode = .resizeFill
-        //        skView.presentScene(scene)
         launchGameScene(testMode: false, difficulty: difficultySegmentedControl.selectedSegmentIndex)
     }
     

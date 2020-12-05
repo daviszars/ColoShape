@@ -33,13 +33,11 @@ class GameOverScene: SKScene {
                 defaults.set(score, forKey: "MediumHS")
                 confettiView!.startConfetti()
             }
-        case 2:
+        default:
             if score > defaults.integer(forKey: "HardHS") {
                 defaults.set(score, forKey: "HardHS")
                 confettiView!.startConfetti()
             }
-        default:
-            print("??")
         }
         
         let scoreLabel = SKLabelNode(fontNamed: "Helvetica")
@@ -91,7 +89,7 @@ class GameOverScene: SKScene {
                 let vc = storyboard.instantiateViewController(withIdentifier: "NavigationController")
                 vc.view.frame = (self.view?.frame)!
                 vc.view.layoutIfNeeded()
-                UIView.transition(with: self.view!, duration: 0.0, options: .transitionCrossDissolve, animations:
+                UIView.transition(with: self.view!, duration: 0.1, options: .transitionCrossDissolve, animations:
                                     { self.view?.window?.rootViewController = vc }, completion: { completed in })
             }
         }
