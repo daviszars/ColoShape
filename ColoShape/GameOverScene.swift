@@ -40,29 +40,29 @@ class GameOverScene: SKScene {
             }
         }
         
-        let scoreLabel = SKLabelNode(fontNamed: "Helvetica")
+        let scoreLabel = SKLabelNode(fontNamed: "Comfortaa-Regular")
         if confettiView!.isActive() {
             scoreLabel.text = "NEW High Score: \(score)"
         } else {
             scoreLabel.text = "Score: \(score)"
         }
-        scoreLabel.fontSize = 25
+        scoreLabel.fontSize = 27
         scoreLabel.fontColor = SKColor.white
         scoreLabel.position = CGPoint(x: size.width / 2, y: size.height / 1.5)
         addChild(scoreLabel)
         
-        let tryAgainButton = SKLabelNode(fontNamed: "Helvetica")
+        let tryAgainButton = SKLabelNode(fontNamed: "Comfortaa-Regular")
         tryAgainButton.name = "tryAgain"
         tryAgainButton.text = "Try Again"
-        tryAgainButton.fontSize = 23
+        tryAgainButton.fontSize = 25
         tryAgainButton.fontColor = SKColor.white
         tryAgainButton.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(tryAgainButton)
         
-        let mainMenuButton = SKLabelNode(fontNamed: "Helvetica")
+        let mainMenuButton = SKLabelNode(fontNamed: "Comfortaa-Regular")
         mainMenuButton.name = "mainMenu"
         mainMenuButton.text = "Main Menu"
-        mainMenuButton.fontSize = 18
+        mainMenuButton.fontSize = 20
         mainMenuButton.fontColor = SKColor.white
         mainMenuButton.position = CGPoint(x: size.width / 2, y: size.height / 2.6)
         addChild(mainMenuButton)
@@ -89,7 +89,7 @@ class GameOverScene: SKScene {
                 let vc = storyboard.instantiateViewController(withIdentifier: "NavigationController")
                 vc.view.frame = (self.view?.frame)!
                 vc.view.layoutIfNeeded()
-                UIView.transition(with: self.view!, duration: 0.1, options: .transitionCrossDissolve, animations:
+                UIView.transition(with: self.view!, duration: 0.0, options: .transitionCrossDissolve, animations:
                                     { self.view?.window?.rootViewController = vc }, completion: { completed in })
             }
         }

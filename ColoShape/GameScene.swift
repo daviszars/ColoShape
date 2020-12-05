@@ -27,19 +27,23 @@ class GameScene: SKScene {
     
     //MARK: makeShape()
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
-        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 45, weight: .bold, scale: .large)
+        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 45, weight: .heavy, scale: .large)
         let image = UIImage(systemName: shape, withConfiguration: shapeConfig)!.withTintColor(color)
         let data = image.pngData()!
         let newImage = UIImage(data:data)!
         let texture = SKTexture(image: newImage)
-        let shapeSize = size.height * 0.12
+        let shapeSize = size.height * 0.13
         let targetColoShape = SKSpriteNode(texture: texture, size: CGSize(width: shapeSize, height: shapeSize))
         
         let numberLabel = SKLabelNode(fontNamed: "Helvetica")
         numberLabel.text = number
         numberLabel.fontSize = 34
         numberLabel.fontColor = color
-        numberLabel.position = CGPoint(x: -3, y: -12)
+        if shape == "triangle" {
+            numberLabel.position = CGPoint(x: -3, y: -17)
+        } else {
+            numberLabel.position = CGPoint(x: -3, y: -12)
+        }
         numberLabel.zPosition = -1
         targetColoShape.addChild(numberLabel)
         
@@ -55,25 +59,27 @@ class GameScene: SKScene {
         scoreLabel.fontSize = 20
         scoreLabel.fontColor = SKColor.lightGray
         scoreLabel.position = CGPoint(x: size.width - 50, y: size.height - 50)
-        addChild(scoreLabel)
+        if testMode == false {
+            addChild(scoreLabel)
+        }
         
         var waitDuration: Double
         switch difficulty {
         case 0:
-            waitDuration = 0.5
-            moveSpeed = 2.5
-            targetColor = UIColor.lightGray
+            waitDuration = 0.45
+            moveSpeed = 3.6
+            targetColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ""
         case 1:
-            waitDuration = 0.6
-            moveSpeed = 2.7
+            waitDuration = 0.50
+            moveSpeed = 3.7
             targetColor = ColoShape.colors.randomElement()
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ""
         default:
-            waitDuration = 0.7
-            moveSpeed = 3.0
+            waitDuration = 0.55
+            moveSpeed = 3.8
             targetColor = ColoShape.colors.randomElement()
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ColoShape.numbers.randomElement()
@@ -98,17 +104,20 @@ class GameScene: SKScene {
     
     //MARK: addShape()
     func addShape() {
-        counter+=1
         let chance = rand.randomElement()
         var colors: UIColor? = nil
         var shapes: String? = nil
         var numbers: String? = nil
         
+        counter+=1
+        if counter < 10 {
+            moveSpeed*=0.985
+        } else if counter < 30 {
+            moveSpeed*=0.980
+        }
+        
         switch difficulty {
         case 0:
-            if counter > 5 && counter < 20 {
-                moveSpeed*=0.98
-            }
             colors = UIColor.lightGray
             shapes = ColoShape.shapes.randomElement()!
             numbers = ""
@@ -120,9 +129,6 @@ class GameScene: SKScene {
                 shapes = targetShape
             }
         case 1:
-            if counter > 5 && counter < 20 {
-                moveSpeed*=0.98
-            }
             colors = ColoShape.colors.randomElement()!
             shapes = ColoShape.shapes.randomElement()!
             numbers = ""
@@ -143,9 +149,6 @@ class GameScene: SKScene {
                 }
             }
         default:
-            if counter > 5 && counter < 20 {
-                moveSpeed*=0.98
-            }
             colors = ColoShape.colors.randomElement()!
             shapes = ColoShape.shapes.randomElement()!
             numbers = ColoShape.numbers.randomElement()!

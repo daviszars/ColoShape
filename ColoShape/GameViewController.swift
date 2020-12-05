@@ -46,9 +46,14 @@ class GameViewController: UIViewController {
             defaults.set(0, forKey: "MediumHS")
             defaults.set(0, forKey: "HardHS")
         }
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
-        difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        //        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        //        difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        //        difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        let font = UIFont(name: "Comfortaa-Regular", size: 15)
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,
+                              NSAttributedString.Key.font: font!]
+            difficultySegmentedControl.setTitleTextAttributes(textAttributes, for: .normal)
+            difficultySegmentedControl.setTitleTextAttributes(textAttributes, for: .selected)
         
         
         switch difficultySegmentedControl.selectedSegmentIndex {
@@ -56,10 +61,8 @@ class GameViewController: UIViewController {
             highScoreLabel.text = "High Score: \(defaults.integer(forKey: "EasyHS"))"
         case 1:
             highScoreLabel.text = "High Score: \(defaults.integer(forKey: "MediumHS"))"
-        case 2:
-            highScoreLabel.text = "High Score: \(defaults.integer(forKey: "HardHS"))"
         default:
-            print("??")
+            highScoreLabel.text = "High Score: \(defaults.integer(forKey: "HardHS"))"
         }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(playButtonPressed))
@@ -88,11 +91,9 @@ class GameViewController: UIViewController {
         case 1:
             highScoreLabel.text = "High Score: \(defaults.integer(forKey: "MediumHS"))"
             launchGameScene(testMode: true, difficulty: 1)
-        case 2:
+        default:
             highScoreLabel.text = "High Score: \(defaults.integer(forKey: "HardHS"))"
             launchGameScene(testMode: true, difficulty: 2)
-        default:
-            print("??")
         }
     }
     
