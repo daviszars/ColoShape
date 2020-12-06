@@ -46,9 +46,8 @@ class GameViewController: UIViewController {
             defaults.set(0, forKey: "MediumHS")
             defaults.set(0, forKey: "HardHS")
         }
-        //        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        //        difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
-        //        difficultySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        
+        //modify segmentedControl font, color
         let font = UIFont(name: "Comfortaa-Regular", size: 15)
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black,
                               NSAttributedString.Key.font: font!]

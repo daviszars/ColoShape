@@ -12,6 +12,7 @@
 		2921954025409F3C00715FAB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2921953F25409F3C00715FAB /* GameViewController.swift */; };
 		2921954325409F3C00715FAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2921954125409F3C00715FAB /* Main.storyboard */; };
 		2921954525409F4000715FAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2921954425409F4000715FAB /* Assets.xcassets */; };
+		293CB4D5257C442300107407 /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CB4D4257C442300107407 /* RootPageViewController.swift */; };
 		29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900B25473B2C00D5AE94 /* ColoShape.swift */; };
 		29C790102547591800D5AE94 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900F2547591800D5AE94 /* GameOverScene.swift */; };
 		29D9C32C257B2AE700F253F1 /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29D9C32B257B2AE700F253F1 /* Comfortaa.ttf */; };
@@ -30,6 +31,7 @@
 		2921954225409F3C00715FAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2921954425409F4000715FAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2921954625409F4000715FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		293CB4D4257C442300107407 /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
 		29C7900B25473B2C00D5AE94 /* ColoShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoShape.swift; sourceTree = "<group>"; };
 		29C7900F2547591800D5AE94 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		29D9C32B257B2AE700F253F1 /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa.ttf; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				2921953F25409F3C00715FAB /* GameViewController.swift */,
 				2921954125409F3C00715FAB /* Main.storyboard */,
 				29EC48722571A077007FE4FB /* SettingsViewController.swift */,
+				293CB4D4257C442300107407 /* RootPageViewController.swift */,
 				2921954425409F4000715FAB /* Assets.xcassets */,
 				2921954625409F4000715FAB /* Info.plist */,
 				29DE6741257ADC6B002B02B7 /* gameOver.m4a */,
@@ -230,6 +233,7 @@
 				29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */,
 				2921953E25409F3C00715FAB /* GameScene.swift in Sources */,
 				2921954025409F3C00715FAB /* GameViewController.swift in Sources */,
+				293CB4D5257C442300107407 /* RootPageViewController.swift in Sources */,
 				2921953825409F3C00715FAB /* AppDelegate.swift in Sources */,
 				29EC48732571A077007FE4FB /* SettingsViewController.swift in Sources */,
 			);
