@@ -77,6 +77,8 @@
 		2921953625409F3C00715FAB /* ColoShape */ = {
 			isa = PBXGroup;
 			children = (
+				29DD64B925815DAE00D9C714 /* Sounds */,
+				29DD64B825815DAC00D9C714 /* Fonts */,
 				2921953725409F3C00715FAB /* AppDelegate.swift */,
 				29C7900B25473B2C00D5AE94 /* ColoShape.swift */,
 				29C7900F2547591800D5AE94 /* GameOverScene.swift */,
@@ -87,12 +89,26 @@
 				293CB4D4257C442300107407 /* RootPageViewController.swift */,
 				2921954425409F4000715FAB /* Assets.xcassets */,
 				2921954625409F4000715FAB /* Info.plist */,
-				29DE6741257ADC6B002B02B7 /* gameOver.m4a */,
-				29DE6746257ADC9C002B02B7 /* impact.m4a */,
+			);
+			path = ColoShape;
+			sourceTree = "<group>";
+		};
+		29DD64B825815DAC00D9C714 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
 				29D9C32B257B2AE700F253F1 /* Comfortaa.ttf */,
 				29D9C32E257B2AF600F253F1 /* SquadaOne.ttf */,
 			);
-			path = ColoShape;
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		29DD64B925815DAE00D9C714 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				29DE6741257ADC6B002B02B7 /* gameOver.m4a */,
+				29DE6746257ADC9C002B02B7 /* impact.m4a */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		8EFD32F15A6A77B2989432E5 /* Frameworks */ = {

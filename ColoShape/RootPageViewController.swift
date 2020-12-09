@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RootPageViewController: UIPageViewController, UIPageViewControllerDataSource {
+class RootPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     lazy var viewControllerList:[UIViewController] = {
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -18,6 +18,10 @@ class RootPageViewController: UIPageViewController, UIPageViewControllerDataSour
         return [vc1, vc2, vc3]
     }()
     
+    var pageControl = UIPageControl()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +30,20 @@ class RootPageViewController: UIPageViewController, UIPageViewControllerDataSour
         if let firstViewController = viewControllerList.first {
             self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+        
+        self.delegate = self
+        configurePageControl()
+    }
+    
+    func configurePageControl() {
+        pageControl = UIPageControl(frame: CGRect(x: 0, y: UIScreen.main.bounds.maxY - 100, width: UIScreen.main.bounds.width, height: 50))
+        pageControl.numberOfPages = viewControllerList.count
+        pageControl.currentPage = 0
+        pageControl.tintColor = UIColor.black
+        pageControl.pageIndicatorTintColor = UIColor.white
+        pageControl.currentPageIndicatorTintColor = UIColor.black
+        pageControl.isUserInteractionEnabled = false
+        self.view.addSubview(pageControl)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -47,15 +65,10 @@ class RootPageViewController: UIPageViewController, UIPageViewControllerDataSour
         
         return viewControllerList[nextIndex]
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        let pageContentViewController = pageViewController.viewControllers![0]
+        self.pageControl.currentPage = viewControllerList.firstIndex(of: pageContentViewController)!
     }
-    */
 
 }
