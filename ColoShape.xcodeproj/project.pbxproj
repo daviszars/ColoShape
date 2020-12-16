@@ -15,6 +15,7 @@
 		293CB4D5257C442300107407 /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CB4D4257C442300107407 /* RootPageViewController.swift */; };
 		29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900B25473B2C00D5AE94 /* ColoShape.swift */; };
 		29C790102547591800D5AE94 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900F2547591800D5AE94 /* GameOverScene.swift */; };
+		29D5BB6725897713001295D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5BB6625897713001295D2 /* StoreKit.framework */; };
 		29D9C32C257B2AE700F253F1 /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29D9C32B257B2AE700F253F1 /* Comfortaa.ttf */; };
 		29D9C32F257B2AF600F253F1 /* SquadaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29D9C32E257B2AF600F253F1 /* SquadaOne.ttf */; };
 		29DE6743257ADC6B002B02B7 /* gameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 29DE6741257ADC6B002B02B7 /* gameOver.m4a */; };
@@ -34,6 +35,7 @@
 		293CB4D4257C442300107407 /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
 		29C7900B25473B2C00D5AE94 /* ColoShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoShape.swift; sourceTree = "<group>"; };
 		29C7900F2547591800D5AE94 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		29D5BB6625897713001295D2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		29D9C32B257B2AE700F253F1 /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa.ttf; sourceTree = "<group>"; };
 		29D9C32E257B2AF600F253F1 /* SquadaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SquadaOne.ttf; sourceTree = "<group>"; };
 		29DE6741257ADC6B002B02B7 /* gameOver.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameOver.m4a; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB2031E34F2E9AADB2D80643 /* Pods_ColoShape.framework in Frameworks */,
+				29D5BB6725897713001295D2 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +117,7 @@
 		8EFD32F15A6A77B2989432E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29D5BB6625897713001295D2 /* StoreKit.framework */,
 				2BE0698134241A38D593D433 /* Pods_ColoShape.framework */,
 			);
 			name = Frameworks;

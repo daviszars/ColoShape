@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
     }
     
     let defaults = UserDefaults.standard
+    let productID = "com.daviszarins.ColoShape.RemoveAds"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,13 @@ class GameViewController: UIViewController {
             defaults.set(0, forKey: "EasyHS")
             defaults.set(0, forKey: "MediumHS")
             defaults.set(0, forKey: "HardHS")
+            defaults.set(false, forKey: productID)
+        }
+        
+        if defaults.bool(forKey: productID) {
+            print ("must not show ads")
+        } else {
+            print("must show ads")
         }
         
         //modify segmentedControl font, color
