@@ -6,9 +6,9 @@ target 'ColoShape' do
   use_frameworks!
 
   # Pods for ColoShape
-#pod 'SwiftConfettiView'
+pod 'SwiftConfettiView'
 #pod 'Firebase/Core'
 #pod 'Firebase/AdMob'
-#pod 'Google-Mobile-Ads-SDK'
+pod 'Google-Mobile-Ads-SDK'
 
 end
