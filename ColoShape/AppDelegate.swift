@@ -6,6 +6,8 @@
 //
 
 import UIKit
+//import Firebase
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        
+//        //init firebase
+//        FirebaseApp.configure()
+        //init admob
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         return true
     }

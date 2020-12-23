@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+//import GoogleMobileAds
 
 class GameScene: SKScene {
     
@@ -51,8 +52,7 @@ class GameScene: SKScene {
     }
     
     //MARK: didMove(to view)
-    override func didMove(to view: SKView) {
-        
+    override func didMove(to view: SKView) {        
         backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
         scoreLabel.text = ("Score: \(score)")
@@ -232,6 +232,7 @@ class GameScene: SKScene {
         gameOverScene.difficulty = self.difficulty
         gameOverScene.score = self.score
         self.view?.presentScene(gameOverScene, transition: reveal)
+        
     }
     
 }

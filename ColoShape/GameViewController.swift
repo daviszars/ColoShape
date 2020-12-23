@@ -8,6 +8,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 
 class GameViewController: UIViewController {
     
@@ -18,6 +19,31 @@ class GameViewController: UIViewController {
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     
+    private let banner: GADBannerView = {
+        let banner = GADBannerView()
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        //ca-app-pub-5281174389456976/2976938976 - real one
+        banner.load(GADRequest())
+        banner.backgroundColor = .secondarySystemBackground
+        return banner
+    }()
+    
+    private var interstitialAd: GADInterstitial?
+    
+    private func createAd() -> GADInterstitial {
+        //ca-app-pub-5281174389456976/1104921278 - real one
+        //ca-app-pub-3940256099942544/4411468910 - test
+        let ad = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        ad.delegate = self
+        ad.load(GADRequest())
+        return ad
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        banner.frame = CGRect(x: 0, y: view.frame.size.height - 50, width: view.frame.size.width, height: 50).integral
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         self.navigationController?.isNavigationBarHidden = true
@@ -26,8 +52,11 @@ class GameViewController: UIViewController {
     let defaults = UserDefaults.standard
     let productID = "com.daviszarins.ColoShape.RemoveAds"
     
+    //MARK: viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.interstitialAd = createAd()
         
         if let firstOpen = defaults.object(forKey: "FirstOpen") as? Date {
             // This is NOT the first launch
@@ -76,6 +105,11 @@ class GameViewController: UIViewController {
         playButton.addGestureRecognizer(tap)
         
         launchGameScene(testMode: true, difficulty: difficultySegmentedControl.selectedSegmentIndex)
+        
+        if defaults.bool(forKey: productID) == false {
+            banner.rootViewController = self
+            view.addSubview(banner)
+        }
     }
     
     func launchGameScene(testMode: Bool, difficulty: Int) {
@@ -108,15 +142,41 @@ class GameViewController: UIViewController {
         return false
     }
     
+    override var prefersHomeIndicatorAutoHidden: Bool {
+      return false
+    }
+
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+      return UIRectEdge.bottom
+    }
+    
     @objc func playButtonPressed(sender: UITapGestureRecognizer? = nil) {
-        backgroundImageView.removeFromSuperview()
+        //backgroundImageView.removeFromSuperview()
         menuTitleLabel.removeFromSuperview()
         playButton.removeFromSuperview()
         difficultySegmentedControl.removeFromSuperview()
         settingsButton.removeFromSuperview()
         highScoreLabel.removeFromSuperview()
+        banner.removeFromSuperview()
         defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
-        launchGameScene(testMode: false, difficulty: difficultySegmentedControl.selectedSegmentIndex)
+        if interstitialAd?.isReady == true && defaults.bool(forKey: productID) == false {
+            backgroundImageView.alpha = 1
+            interstitialAd?.present(fromRootViewController: self)
+        } else {
+            backgroundImageView.removeFromSuperview()
+            launchGameScene(testMode: false, difficulty: defaults.integer(forKey: "Difficulty"))
+        }
     }
     
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        backgroundImageView.removeFromSuperview()
+        launchGameScene(testMode: false, difficulty: defaults.integer(forKey: "Difficulty"))
+    }
+    
+}
+
+extension UIViewController: GADInterstitialDelegate {
+//    public func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+//        interstitialAd = createAd()
+//    }
 }

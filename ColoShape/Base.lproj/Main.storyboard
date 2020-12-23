@@ -453,7 +453,7 @@
         <image name="graduationcap" catalog="system" width="128" height="106"/>
         <image name="iphone.radiowaves.left.and.right" catalog="system" width="128" height="86"/>
         <image name="play.slash" catalog="system" width="120" height="128"/>
-        <image name="speaker.wave.2" catalog="system" width="128" height="90"/>
+        <image name="speaker.wave.2" catalog="system" width="32" height="32"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
