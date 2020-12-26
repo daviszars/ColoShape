@@ -38,6 +38,8 @@
 		29D5BB6625897713001295D2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		29D9C32B257B2AE700F253F1 /* Comfortaa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Comfortaa.ttf; sourceTree = "<group>"; };
 		29D9C32E257B2AF600F253F1 /* SquadaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SquadaOne.ttf; sourceTree = "<group>"; };
+		29DB6B0E25978641004330C3 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
+		29DB6B102597864E004330C3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		29DE6741257ADC6B002B02B7 /* gameOver.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameOver.m4a; sourceTree = "<group>"; };
 		29DE6746257ADC9C002B02B7 /* impact.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.m4a; sourceTree = "<group>"; };
 		29EC48722571A077007FE4FB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,8 @@
 		8EFD32F15A6A77B2989432E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29DB6B102597864E004330C3 /* AdSupport.framework */,
+				29DB6B0E25978641004330C3 /* AppTrackingTransparency.framework */,
 				29D5BB6625897713001295D2 /* StoreKit.framework */,
 				2BE0698134241A38D593D433 /* Pods_ColoShape.framework */,
 			);

@@ -130,8 +130,8 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="55P-xi-136">
                                                     <rect key="frame" x="343" y="6" width="51" height="31"/>
                                                 </switch>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker.wave.2" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PuP-QW-nF0">
-                                                    <rect key="frame" x="20" y="10.5" width="25" height="22"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker.wave.2" translatesAutoresizingMaskIntoConstraints="NO" id="PuP-QW-nF0">
+                                                    <rect key="frame" x="20" y="9" width="25" height="25"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="UHR-sz-ML3"/>
@@ -169,7 +169,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajJ-q0-Hhc">
                                                     <rect key="frame" x="343" y="6" width="51" height="31"/>
                                                 </switch>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone.radiowaves.left.and.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h2E-qn-cXZ">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave.3.right" translatesAutoresizingMaskIntoConstraints="NO" id="h2E-qn-cXZ">
                                                     <rect key="frame" x="20" y="9" width="25" height="25"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <constraints>
@@ -215,8 +215,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graduationcap" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wh5-Vj-zXL">
-                                                    <rect key="frame" x="20" y="11.5" width="25" height="27.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graduationcap" translatesAutoresizingMaskIntoConstraints="NO" id="Wh5-Vj-zXL">
+                                                    <rect key="frame" x="20" y="11" width="25" height="25"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="kne-C5-gYj"/>
@@ -256,8 +256,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.slash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gQJ-ba-ifU">
-                                                    <rect key="frame" x="20" y="12.5" width="25" height="21.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.slash" translatesAutoresizingMaskIntoConstraints="NO" id="gQJ-ba-ifU">
+                                                    <rect key="frame" x="20" y="11" width="25" height="25"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="8SL-RE-99u"/>
@@ -302,8 +302,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.counterclockwise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PVh-K6-Fc2">
-                                                    <rect key="frame" x="20" y="10" width="25" height="25"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.counterclockwise" translatesAutoresizingMaskIntoConstraints="NO" id="PVh-K6-Fc2">
+                                                    <rect key="frame" x="20" y="11" width="25" height="25"/>
                                                     <color key="tintColor" systemColor="labelColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="AaO-eL-GZs"/>
@@ -449,14 +449,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
-        <image name="graduationcap" catalog="system" width="128" height="106"/>
-        <image name="iphone.radiowaves.left.and.right" catalog="system" width="128" height="86"/>
-        <image name="play.slash" catalog="system" width="120" height="128"/>
-        <image name="speaker.wave.2" catalog="system" width="32" height="32"/>
+        <image name="arrow.counterclockwise" width="12" height="14"/>
+        <image name="graduationcap" width="18" height="16"/>
+        <image name="play.slash" width="11" height="11"/>
+        <image name="speaker.wave.2" width="15" height="12"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
+        <image name="wave.3.right" width="7" height="12"/>
         <namedColor name="Color">
             <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

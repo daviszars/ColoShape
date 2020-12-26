@@ -14,6 +14,7 @@ class GameScene: SKScene {
     var targetColor: UIColor? = nil
     var targetShape: String? = nil
     var targetNumber: String? = nil
+    var secondTargetShape: String? = nil
     var score: Int = 0
     var scoreLabel = SKLabelNode()
     var difficulty: Int = 0
@@ -23,8 +24,6 @@ class GameScene: SKScene {
     var moveSpeed: Float = 3.0
     var testMode: Bool = false
     let defaults = UserDefaults.standard
-    let gameOverSound = SKAction.playSoundFileNamed("gameOver.m4a", waitForCompletion: false)
-    let tickSound = SKAction.playSoundFileNamed("impact.m4a", waitForCompletion: false)
     
     //MARK: makeShape()
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
@@ -52,7 +51,7 @@ class GameScene: SKScene {
     }
     
     //MARK: didMove(to view)
-    override func didMove(to view: SKView) {        
+    override func didMove(to view: SKView) {
         backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
         scoreLabel.text = ("Score: \(score)")
@@ -66,32 +65,45 @@ class GameScene: SKScene {
         var waitDuration: Double
         switch difficulty {
         case 0:
-            waitDuration = 0.45
-            moveSpeed = 3.6
+            waitDuration = 0.55
+            moveSpeed = 4.2
             targetColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
             targetShape = ColoShape.shapes.randomElement()
+            repeat {
+                secondTargetShape = ColoShape.shapes.randomElement()
+            } while (secondTargetShape == targetShape)
             targetNumber = ""
         case 1:
-            waitDuration = 0.50
-            moveSpeed = 3.7
+            waitDuration = 0.60
+            moveSpeed = 4.4
             targetColor = ColoShape.colors.randomElement()
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ""
         default:
-            waitDuration = 0.55
-            moveSpeed = 3.8
+            waitDuration = 0.65
+            moveSpeed = 4.6
             targetColor = ColoShape.colors.randomElement()
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ColoShape.numbers.randomElement()
         }
         
+        let fadeIn = SKAction.fadeIn(withDuration: 1.0)
+        let fadeOut = SKAction.fadeOut(withDuration: 1.0)
+        let secondSequence = SKAction.sequence([fadeIn, fadeOut])
+        
         let targetColoShape = makeShape(shape: targetShape!, color: targetColor!, number: targetNumber!)
         targetColoShape.position = CGPoint(x: size.width / 2, y: size.height / 2)
         targetColoShape.alpha = 0.0
+        if difficulty == 0 {
+            let secondTargetColoShape = makeShape(shape: secondTargetShape!, color: targetColor!, number: targetNumber!)
+            secondTargetColoShape.alpha = 0.0
+            targetColoShape.position = CGPoint(x: size.width / 2 - 60, y: size.height / 2)
+            secondTargetColoShape.position = CGPoint(x: size.width / 2 + 60, y: size.height / 2)
+            addChild(secondTargetColoShape)
+            secondTargetColoShape.run(secondSequence)
+        }
         addChild(targetColoShape)
-        
-        let fadeIn = SKAction.fadeIn(withDuration: 1.0)
-        let fadeOut = SKAction.fadeOut(withDuration: 1.0)
+
         let addShapes = SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addShape),
@@ -100,6 +112,7 @@ class GameScene: SKScene {
         )
         let sequence = SKAction.sequence([fadeIn, fadeOut, addShapes])
         targetColoShape.run(sequence)
+        
     }
     
     //MARK: addShape()
@@ -121,9 +134,10 @@ class GameScene: SKScene {
             colors = UIColor.lightGray
             shapes = ColoShape.shapes.randomElement()!
             numbers = ""
-            //33% chance of target shape
-            if counter % 2 == 0 && chance == 1 {
+            if counter % 3 == 0 && chance == 1 {
                 shapes = targetShape
+            } else if counter % 2 == 0 && chance == 1 {
+                shapes = secondTargetShape
             }
             if badCounter == 4 {
                 shapes = targetShape
@@ -169,7 +183,7 @@ class GameScene: SKScene {
         let startingX = CGFloat.random(in: size.width*0.15 ... size.width*0.85)
         shape.position = CGPoint(x: startingX, y: size.height + shape.size.height/2)
         
-        if targetShape == shapes || (difficulty != 0 && targetColor == colors) || (difficulty == 2 && targetNumber == numbers) {
+        if targetShape == shapes || (difficulty != 0 && targetColor == colors) || (difficulty == 2 && targetNumber == numbers) || (difficulty == 0 && secondTargetShape == shapes) {
             shape.name = "good"
             badCounter = 0
         } else {
@@ -202,11 +216,11 @@ class GameScene: SKScene {
                 let location = touch.location(in: self)
                 if (atPoint(location).name == "good") {
                     if defaults.bool(forKey: "Vibration") {
-                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        let generator = UIImpactFeedbackGenerator(style: .medium)
                         generator.impactOccurred()
                     }
                     if defaults.bool(forKey: "Sound") {
-                        run(tickSound)
+                        run(SKAction.playSoundFileNamed("impact.m4a", waitForCompletion: false))
                     }
                     atPoint(location).removeFromParent()
                     score += 1
@@ -221,7 +235,7 @@ class GameScene: SKScene {
     //MARK: gameOver()
     func gameOver(node: SKNode) {
         if defaults.bool(forKey: "Sound") {
-            run(gameOverSound)
+            run(SKAction.playSoundFileNamed("gameOver.m4a", waitForCompletion: false))
         }
         if defaults.bool(forKey: "Vibration") {
             let generator = UINotificationFeedbackGenerator()

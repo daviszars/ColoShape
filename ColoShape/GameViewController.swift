@@ -9,6 +9,8 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import GoogleMobileAds
+import AppTrackingTransparency
+import AdSupport
 
 class GameViewController: UIViewController {
     
@@ -19,12 +21,25 @@ class GameViewController: UIViewController {
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     
+    
+    private func requestIDFA() {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                // Tracking authorization completed. Start loading ads here.
+                // loadAd()
+            })
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
     private let banner: GADBannerView = {
         let banner = GADBannerView()
         banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         //ca-app-pub-5281174389456976/2976938976 - real one
+        //ca-app-pub-3940256099942544/2934735716 - test
         banner.load(GADRequest())
-        banner.backgroundColor = .secondarySystemBackground
+        //banner.backgroundColor = .secondarySystemBackground
         return banner
     }()
     
@@ -41,7 +56,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        banner.frame = CGRect(x: 0, y: view.frame.size.height - 50, width: view.frame.size.width, height: 50).integral
+        banner.frame = CGRect(x: 0, y: view.frame.size.height - 86, width: view.frame.size.width, height: 50).integral
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +71,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        requestIDFA()
+        if defaults.bool(forKey: productID) == false {
+            banner.rootViewController = self
+            view.addSubview(banner)
+        }
         self.interstitialAd = createAd()
         
         if let firstOpen = defaults.object(forKey: "FirstOpen") as? Date {
@@ -105,13 +125,10 @@ class GameViewController: UIViewController {
         playButton.addGestureRecognizer(tap)
         
         launchGameScene(testMode: true, difficulty: difficultySegmentedControl.selectedSegmentIndex)
-        
-        if defaults.bool(forKey: productID) == false {
-            banner.rootViewController = self
-            view.addSubview(banner)
-        }
+
     }
     
+    //MARK: launchGameScene()
     func launchGameScene(testMode: Bool, difficulty: Int) {
         let scene = GameScene(size: view.bounds.size)
         scene.difficulty = difficulty
@@ -150,6 +167,7 @@ class GameViewController: UIViewController {
       return UIRectEdge.bottom
     }
     
+    //MARK: playButtonPressed()
     @objc func playButtonPressed(sender: UITapGestureRecognizer? = nil) {
         //backgroundImageView.removeFromSuperview()
         menuTitleLabel.removeFromSuperview()
@@ -159,7 +177,8 @@ class GameViewController: UIViewController {
         highScoreLabel.removeFromSuperview()
         banner.removeFromSuperview()
         defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
-        if interstitialAd?.isReady == true && defaults.bool(forKey: productID) == false {
+        let chance = 1...3
+        if interstitialAd?.isReady == true && defaults.bool(forKey: productID) == false && chance.randomElement()! == 1 {
             backgroundImageView.alpha = 1
             interstitialAd?.present(fromRootViewController: self)
         } else {
