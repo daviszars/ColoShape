@@ -6,8 +6,8 @@
 //
 
 import UIKit
-//import Firebase
 import GoogleMobileAds
+import AVFoundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         
-//        //init firebase
-//        FirebaseApp.configure()
         //init admob
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        do { try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient); try AVAudioSession.sharedInstance().setActive(true) } catch let error as NSError { print(error) } 
         
         return true
     }

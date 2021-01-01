@@ -7,7 +7,6 @@
 
 import SpriteKit
 import GameplayKit
-//import GoogleMobileAds
 
 class GameScene: SKScene {
     
@@ -24,10 +23,12 @@ class GameScene: SKScene {
     var moveSpeed: Float = 3.0
     var testMode: Bool = false
     let defaults = UserDefaults.standard
+    let impactSound = SKAction.playSoundFileNamed("impact.m4a", waitForCompletion: false)
+    let gameOverSound = SKAction.playSoundFileNamed("gameOver.m4a", waitForCompletion: false)
     
     //MARK: makeShape()
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
-        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 45, weight: .heavy, scale: .large)
+        let shapeConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .heavy, scale: .large)
         let image = UIImage(systemName: shape, withConfiguration: shapeConfig)!.withTintColor(color)
         let data = image.pngData()!
         let newImage = UIImage(data:data)!
@@ -67,7 +68,7 @@ class GameScene: SKScene {
         case 0:
             waitDuration = 0.55
             moveSpeed = 4.2
-            targetColor = #colorLiteral(red: 0.6642242074, green: 0.6642400622, blue: 0.6642315388, alpha: 1)
+            targetColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
             targetShape = ColoShape.shapes.randomElement()
             repeat {
                 secondTargetShape = ColoShape.shapes.randomElement()
@@ -124,9 +125,9 @@ class GameScene: SKScene {
         
         counter+=1
         if counter < 10 {
-            moveSpeed*=0.985
-        } else if counter < 30 {
             moveSpeed*=0.980
+        } else if counter < 25 {
+            moveSpeed*=0.975
         }
         
         switch difficulty {
@@ -220,7 +221,7 @@ class GameScene: SKScene {
                         generator.impactOccurred()
                     }
                     if defaults.bool(forKey: "Sound") {
-                        run(SKAction.playSoundFileNamed("impact.m4a", waitForCompletion: false))
+                        run(impactSound)
                     }
                     atPoint(location).removeFromParent()
                     score += 1
@@ -235,7 +236,7 @@ class GameScene: SKScene {
     //MARK: gameOver()
     func gameOver(node: SKNode) {
         if defaults.bool(forKey: "Sound") {
-            run(SKAction.playSoundFileNamed("gameOver.m4a", waitForCompletion: false))
+            run(gameOverSound)
         }
         if defaults.bool(forKey: "Vibration") {
             let generator = UINotificationFeedbackGenerator()

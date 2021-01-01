@@ -23,7 +23,6 @@ class SettingsViewController: UITableViewController, SKPaymentTransactionObserve
                 print("Payment successful")
                 defaults.set(true, forKey: productID)
                 SKPaymentQueue.default().finishTransaction(transaction)
-                //TODO: Remove purchase button
             } else if transaction.transactionState == .failed {
                 //payment failed
                 if let error = transaction.error {

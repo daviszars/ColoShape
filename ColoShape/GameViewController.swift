@@ -56,7 +56,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        banner.frame = CGRect(x: 0, y: view.frame.size.height - 86, width: view.frame.size.width, height: 50).integral
+        banner.frame = CGRect(x: 0, y: view.safeAreaLayoutGuide.layoutFrame.maxY - 50, width: view.frame.size.width, height: 50)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,9 +83,9 @@ class GameViewController: UIViewController {
             print("The app was first opened on \(firstOpen)")
             difficultySegmentedControl.selectedSegmentIndex = defaults.integer(forKey: "Difficulty")
             //remove later vvvvv
-            defaults.set(0, forKey: "EasyHS")
-            defaults.set(0, forKey: "MediumHS")
-            defaults.set(0, forKey: "HardHS")
+//            defaults.set(0, forKey: "EasyHS")
+//            defaults.set(0, forKey: "MediumHS")
+//            defaults.set(0, forKey: "HardHS")
         } else {
             // This is the first launch
             defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
@@ -156,7 +156,7 @@ class GameViewController: UIViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
-        return false
+        return true
     }
     
     override var prefersHomeIndicatorAutoHidden: Bool {
@@ -177,7 +177,7 @@ class GameViewController: UIViewController {
         highScoreLabel.removeFromSuperview()
         banner.removeFromSuperview()
         defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
-        let chance = 1...3
+        let chance = 1...2
         if interstitialAd?.isReady == true && defaults.bool(forKey: productID) == false && chance.randomElement()! == 1 {
             backgroundImageView.alpha = 1
             interstitialAd?.present(fromRootViewController: self)
