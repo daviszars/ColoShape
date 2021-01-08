@@ -134,8 +134,8 @@ class GameViewController: UIViewController {
         scene.difficulty = difficulty
         scene.testMode = testMode
         let skView = view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ze-pt-iNl">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Ze-pt-iNl">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -371,19 +371,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jQa-Tq-hMf">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="labelColor"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="htp1" translatesAutoresizingMaskIntoConstraints="NO" id="mme-zc-lNd">
+                                <rect key="frame" x="20" y="168" width="374" height="560"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mme-zc-lNd" secondAttribute="height" multiplier="187:280" id="Tox-mT-feQ"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EwI-BX-QVj"/>
-                        <color key="backgroundColor" name="Color"/>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mme-zc-lNd" firstAttribute="centerX" secondItem="70n-hV-YBG" secondAttribute="centerX" id="AhK-Fd-jXf"/>
+                            <constraint firstItem="mme-zc-lNd" firstAttribute="centerY" secondItem="70n-hV-YBG" secondAttribute="centerY" id="HQB-OR-fKU"/>
+                            <constraint firstItem="EwI-BX-QVj" firstAttribute="trailing" secondItem="mme-zc-lNd" secondAttribute="trailing" constant="20" id="W2x-t5-qCS"/>
+                            <constraint firstItem="mme-zc-lNd" firstAttribute="leading" secondItem="EwI-BX-QVj" secondAttribute="leading" constant="20" id="jDd-pj-rrn"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWg-WD-95J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2303" y="733"/>
+            <point key="canvasLocation" x="2302.898550724638" y="732.58928571428567"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NUB-2u-jK5">
@@ -393,19 +400,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xtq-Lb-cKV">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="labelColor"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="htp2" translatesAutoresizingMaskIntoConstraints="NO" id="M29-CU-hBD">
+                                <rect key="frame" x="0.0" y="139" width="414" height="618"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M29-CU-hBD" secondAttribute="height" multiplier="69:103" id="3tI-Y2-zif"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V5E-Wg-5NT"/>
-                        <color key="backgroundColor" name="Color"/>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="M29-CU-hBD" firstAttribute="centerX" secondItem="hyr-bo-W5u" secondAttribute="centerX" id="CBC-Em-YCF"/>
+                            <constraint firstItem="M29-CU-hBD" firstAttribute="centerY" secondItem="hyr-bo-W5u" secondAttribute="centerY" id="MeX-io-RTX"/>
+                            <constraint firstItem="M29-CU-hBD" firstAttribute="trailing" secondItem="V5E-Wg-5NT" secondAttribute="trailing" id="ogg-oV-S1w"/>
+                            <constraint firstItem="M29-CU-hBD" firstAttribute="leading" secondItem="V5E-Wg-5NT" secondAttribute="leading" id="qax-W7-LgA"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XlG-Bb-zjl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2957" y="733"/>
+            <point key="canvasLocation" x="2956.521739130435" y="732.58928571428567"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Fad-Dk-rAG">
@@ -415,14 +429,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trash.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="itv-bE-K2n">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jt-ly-DPh">
+                                <rect key="frame" x="89" y="412" width="236" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="Main Menu">
+                                    <color key="titleColor" name="Color"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OXd-rb-W04"/>
-                        <color key="backgroundColor" name="Color"/>
+                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5jt-ly-DPh" firstAttribute="centerX" secondItem="9k0-n6-t7c" secondAttribute="centerX" id="fsS-yj-eQL"/>
+                            <constraint firstItem="5jt-ly-DPh" firstAttribute="centerY" secondItem="9k0-n6-t7c" secondAttribute="centerY" id="yhq-9K-aVh"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7c-lz-gaZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -434,6 +454,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="7Ze-pt-iNl" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="FXB-Kw-rBn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ci8-F3-GhO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -451,11 +472,10 @@
     <resources>
         <image name="arrow.counterclockwise" width="12" height="14"/>
         <image name="graduationcap" width="18" height="16"/>
+        <image name="htp1" width="821" height="1090"/>
+        <image name="htp2" width="750" height="1244"/>
         <image name="play.slash" width="11" height="11"/>
         <image name="speaker.wave.2" width="15" height="12"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
-        <image name="trash.circle" catalog="system" width="128" height="121"/>
-        <image name="trash.fill" catalog="system" width="121" height="128"/>
         <image name="wave.3.right" width="7" height="12"/>
         <namedColor name="Color">
             <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

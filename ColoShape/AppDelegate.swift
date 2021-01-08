@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //init admob
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
+        //set audio to not interrupt background music
         do { try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient); try AVAudioSession.sharedInstance().setActive(true) } catch let error as NSError { print(error) } 
         
         return true

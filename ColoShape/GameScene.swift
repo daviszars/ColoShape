@@ -126,7 +126,7 @@ class GameScene: SKScene {
         counter+=1
         if counter < 10 {
             moveSpeed*=0.980
-        } else if counter < 25 {
+        } else if counter < 20 {
             moveSpeed*=0.975
         }
         
