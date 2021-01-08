@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "htp2.jpeg",
+      "filename" : "appstore.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "htp2@2x.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "htp2@3x.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
