@@ -15,7 +15,7 @@ class RootPageViewController: UIPageViewController, UIPageViewControllerDataSour
         let vc2 = sb.instantiateViewController(withIdentifier: "SecondVC")
         let vc3 = sb.instantiateViewController(withIdentifier: "ThirdVC")
         
-        return [vc1, vc2, vc3]
+        return [vc1, vc2]
     }()
     
     var pageControl = UIPageControl()

@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -371,20 +370,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="htp1" translatesAutoresizingMaskIntoConstraints="NO" id="mme-zc-lNd">
-                                <rect key="frame" x="20" y="168" width="374" height="560"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="htp1" translatesAutoresizingMaskIntoConstraints="NO" id="mme-zc-lNd">
+                                <rect key="frame" x="-13.5" y="154" width="441" height="588"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="mme-zc-lNd" secondAttribute="height" multiplier="187:280" id="Tox-mT-feQ"/>
+                                    <constraint firstAttribute="width" secondItem="mme-zc-lNd" secondAttribute="height" multiplier="374:499" id="Lxp-b8-CDC"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EwI-BX-QVj"/>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mme-zc-lNd" firstAttribute="centerX" secondItem="70n-hV-YBG" secondAttribute="centerX" id="AhK-Fd-jXf"/>
-                            <constraint firstItem="mme-zc-lNd" firstAttribute="centerY" secondItem="70n-hV-YBG" secondAttribute="centerY" id="HQB-OR-fKU"/>
-                            <constraint firstItem="EwI-BX-QVj" firstAttribute="trailing" secondItem="mme-zc-lNd" secondAttribute="trailing" constant="20" id="W2x-t5-qCS"/>
-                            <constraint firstItem="mme-zc-lNd" firstAttribute="leading" secondItem="EwI-BX-QVj" secondAttribute="leading" constant="20" id="jDd-pj-rrn"/>
+                            <constraint firstItem="EwI-BX-QVj" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mme-zc-lNd" secondAttribute="bottom" constant="110" id="BP6-lu-jyV"/>
+                            <constraint firstItem="mme-zc-lNd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EwI-BX-QVj" secondAttribute="top" constant="110" id="ChT-Pu-meD"/>
+                            <constraint firstItem="mme-zc-lNd" firstAttribute="centerY" secondItem="70n-hV-YBG" secondAttribute="centerY" id="Vwx-5v-cJO"/>
+                            <constraint firstItem="mme-zc-lNd" firstAttribute="centerX" secondItem="70n-hV-YBG" secondAttribute="centerX" id="exn-n6-TIu"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -400,20 +399,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="htp2" translatesAutoresizingMaskIntoConstraints="NO" id="M29-CU-hBD">
-                                <rect key="frame" x="0.0" y="139" width="414" height="618"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="htp2" translatesAutoresizingMaskIntoConstraints="NO" id="M29-CU-hBD">
+                                <rect key="frame" x="21.5" y="144" width="371" height="608"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="M29-CU-hBD" secondAttribute="height" multiplier="69:103" id="3tI-Y2-zif"/>
+                                    <constraint firstAttribute="width" secondItem="M29-CU-hBD" secondAttribute="height" multiplier="374:613" id="agj-lK-mEN"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V5E-Wg-5NT"/>
                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="M29-CU-hBD" firstAttribute="centerX" secondItem="hyr-bo-W5u" secondAttribute="centerX" id="CBC-Em-YCF"/>
-                            <constraint firstItem="M29-CU-hBD" firstAttribute="centerY" secondItem="hyr-bo-W5u" secondAttribute="centerY" id="MeX-io-RTX"/>
-                            <constraint firstItem="M29-CU-hBD" firstAttribute="trailing" secondItem="V5E-Wg-5NT" secondAttribute="trailing" id="ogg-oV-S1w"/>
-                            <constraint firstItem="M29-CU-hBD" firstAttribute="leading" secondItem="V5E-Wg-5NT" secondAttribute="leading" id="qax-W7-LgA"/>
+                            <constraint firstItem="M29-CU-hBD" firstAttribute="centerX" secondItem="hyr-bo-W5u" secondAttribute="centerX" id="TOH-tq-pb7"/>
+                            <constraint firstItem="M29-CU-hBD" firstAttribute="centerY" secondItem="hyr-bo-W5u" secondAttribute="centerY" id="dUQ-uB-dJ7"/>
+                            <constraint firstItem="V5E-Wg-5NT" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="M29-CU-hBD" secondAttribute="bottom" constant="100" id="hiV-dy-GAF"/>
+                            <constraint firstItem="M29-CU-hBD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="V5E-Wg-5NT" secondAttribute="top" constant="100" id="rA6-af-sQg"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -430,10 +429,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jt-ly-DPh">
-                                <rect key="frame" x="89" y="412" width="236" height="72"/>
+                                <rect key="frame" x="136.5" y="412" width="141" height="72"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <state key="normal" title="Main Menu">
-                                    <color key="titleColor" name="Color"/>
+                                <state key="normal" title="Return">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                         </subviews>
@@ -477,9 +476,6 @@
         <image name="play.slash" width="11" height="11"/>
         <image name="speaker.wave.2" width="15" height="12"/>
         <image name="wave.3.right" width="7" height="12"/>
-        <namedColor name="Color">
-            <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

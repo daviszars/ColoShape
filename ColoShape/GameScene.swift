@@ -98,8 +98,8 @@ class GameScene: SKScene {
         if difficulty == 0 {
             let secondTargetColoShape = makeShape(shape: secondTargetShape!, color: targetColor!, number: targetNumber!)
             secondTargetColoShape.alpha = 0.0
-            targetColoShape.position = CGPoint(x: size.width / 2 - 60, y: size.height / 2)
-            secondTargetColoShape.position = CGPoint(x: size.width / 2 + 60, y: size.height / 2)
+            targetColoShape.position = CGPoint(x: size.width / 2 - (targetColoShape.size.width/2), y: size.height / 2)
+            secondTargetColoShape.position = CGPoint(x: size.width / 2 + (targetColoShape.size.width/2), y: size.height / 2)
             addChild(secondTargetColoShape)
             secondTargetColoShape.run(secondSequence)
         }
@@ -126,7 +126,7 @@ class GameScene: SKScene {
         counter+=1
         if counter < 10 {
             moveSpeed*=0.980
-        } else if counter < 20 {
+        } else if counter < 18 {
             moveSpeed*=0.975
         }
         

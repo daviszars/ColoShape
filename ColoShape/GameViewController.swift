@@ -35,7 +35,7 @@ class GameViewController: UIViewController {
     
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        banner.adUnitID = "ca-app-pub-5281174389456976/2976938976"
         //ca-app-pub-5281174389456976/2976938976 - real one
         //ca-app-pub-3940256099942544/2934735716 - test
         banner.load(GADRequest())
@@ -48,7 +48,7 @@ class GameViewController: UIViewController {
     private func createAd() -> GADInterstitial {
         //ca-app-pub-5281174389456976/1104921278 - real one
         //ca-app-pub-3940256099942544/4411468910 - test
-        let ad = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let ad = GADInterstitial(adUnitID: "ca-app-pub-5281174389456976/1104921278")
         ad.delegate = self
         ad.load(GADRequest())
         return ad
