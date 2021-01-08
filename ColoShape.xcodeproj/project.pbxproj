@@ -13,6 +13,7 @@
 		2921954325409F3C00715FAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2921954125409F3C00715FAB /* Main.storyboard */; };
 		2921954525409F4000715FAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2921954425409F4000715FAB /* Assets.xcassets */; };
 		293CB4D5257C442300107407 /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CB4D4257C442300107407 /* RootPageViewController.swift */; };
+		29A8199325A8757200C1DAE4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A8199225A8757200C1DAE4 /* Launch Screen.storyboard */; };
 		29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900B25473B2C00D5AE94 /* ColoShape.swift */; };
 		29C790102547591800D5AE94 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900F2547591800D5AE94 /* GameOverScene.swift */; };
 		29D5BB6725897713001295D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5BB6625897713001295D2 /* StoreKit.framework */; };
@@ -33,6 +34,7 @@
 		2921954425409F4000715FAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2921954625409F4000715FAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		293CB4D4257C442300107407 /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
+		29A8199225A8757200C1DAE4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		29C7900B25473B2C00D5AE94 /* ColoShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoShape.swift; sourceTree = "<group>"; };
 		29C7900F2547591800D5AE94 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		29D5BB6625897713001295D2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -90,6 +92,7 @@
 				2921953D25409F3C00715FAB /* GameScene.swift */,
 				2921953F25409F3C00715FAB /* GameViewController.swift */,
 				2921954125409F3C00715FAB /* Main.storyboard */,
+				29A8199225A8757200C1DAE4 /* Launch Screen.storyboard */,
 				29EC48722571A077007FE4FB /* SettingsViewController.swift */,
 				293CB4D4257C442300107407 /* RootPageViewController.swift */,
 				2921954425409F4000715FAB /* Assets.xcassets */,
@@ -201,6 +204,7 @@
 				29DE6743257ADC6B002B02B7 /* gameOver.m4a in Resources */,
 				2921954525409F4000715FAB /* Assets.xcassets in Resources */,
 				29D9C32C257B2AE700F253F1 /* Comfortaa.ttf in Resources */,
+				29A8199325A8757200C1DAE4 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

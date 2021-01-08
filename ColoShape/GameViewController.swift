@@ -82,10 +82,6 @@ class GameViewController: UIViewController {
             // This is NOT the first launch
             print("The app was first opened on \(firstOpen)")
             difficultySegmentedControl.selectedSegmentIndex = defaults.integer(forKey: "Difficulty")
-            //remove later vvvvv
-//            defaults.set(0, forKey: "EasyHS")
-//            defaults.set(0, forKey: "MediumHS")
-//            defaults.set(0, forKey: "HardHS")
         } else {
             // This is the first launch
             defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
