@@ -39,7 +39,6 @@ class GameViewController: UIViewController {
         //ca-app-pub-5281174389456976/2976938976 - real one
         //ca-app-pub-3940256099942544/2934735716 - test
         banner.load(GADRequest())
-        //banner.backgroundColor = .secondarySystemBackground
         return banner
     }()
     
