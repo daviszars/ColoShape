@@ -8,9 +8,6 @@
 import UIKit
 import SpriteKit
 import GameplayKit
-import GoogleMobileAds
-import AppTrackingTransparency
-import AdSupport
 
 class GameViewController: UIViewController {
     
@@ -21,41 +18,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     
-    
-    private func requestIDFA() {
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                // Tracking authorization completed. Start loading ads here.
-                // loadAd()
-            })
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
-    private let banner: GADBannerView = {
-        let banner = GADBannerView()
-        banner.adUnitID = "ca-app-pub-5281174389456976/2976938976"
-        //ca-app-pub-5281174389456976/2976938976 - real one
-        //ca-app-pub-3940256099942544/2934735716 - test
-        banner.load(GADRequest())
-        return banner
-    }()
-    
-    private var interstitialAd: GADInterstitial?
-    
-    private func createAd() -> GADInterstitial {
-        //ca-app-pub-5281174389456976/1104921278 - real one
-        //ca-app-pub-3940256099942544/4411468910 - test
-        let ad = GADInterstitial(adUnitID: "ca-app-pub-5281174389456976/1104921278")
-        ad.delegate = self
-        ad.load(GADRequest())
-        return ad
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        banner.frame = CGRect(x: 0, y: view.safeAreaLayoutGuide.layoutFrame.maxY - 50, width: view.frame.size.width, height: 50)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,13 +34,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        requestIDFA()
-        if defaults.bool(forKey: productID) == false {
-            banner.rootViewController = self
-            view.addSubview(banner)
-        }
-        self.interstitialAd = createAd()
-        
         if let firstOpen = defaults.object(forKey: "FirstOpen") as? Date {
             // This is NOT the first launch
             print("The app was first opened on \(firstOpen)")
@@ -90,13 +47,6 @@ class GameViewController: UIViewController {
             defaults.set(0, forKey: "EasyHS")
             defaults.set(0, forKey: "MediumHS")
             defaults.set(0, forKey: "HardHS")
-            defaults.set(false, forKey: productID)
-        }
-        
-        if defaults.bool(forKey: productID) {
-            print ("must not show ads")
-        } else {
-            print("must show ads")
         }
         
         //modify segmentedControl font, color
@@ -170,27 +120,10 @@ class GameViewController: UIViewController {
         difficultySegmentedControl.removeFromSuperview()
         settingsButton.removeFromSuperview()
         highScoreLabel.removeFromSuperview()
-        banner.removeFromSuperview()
         defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
         let chance = 1...2
-        if interstitialAd?.isReady == true && defaults.bool(forKey: productID) == false && chance.randomElement()! == 1 {
-            backgroundImageView.alpha = 1
-            interstitialAd?.present(fromRootViewController: self)
-        } else {
-            backgroundImageView.removeFromSuperview()
-            launchGameScene(testMode: false, difficulty: defaults.integer(forKey: "Difficulty"))
-        }
-    }
-    
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         backgroundImageView.removeFromSuperview()
         launchGameScene(testMode: false, difficulty: defaults.integer(forKey: "Difficulty"))
     }
     
-}
-
-extension UIViewController: GADInterstitialDelegate {
-//    public func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-//        interstitialAd = createAd()
-//    }
 }

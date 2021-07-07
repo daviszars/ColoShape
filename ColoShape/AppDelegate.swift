@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import GoogleMobileAds
 import AVFoundation
 
 @main
@@ -16,9 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //init admob
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         //set audio to not interrupt background music
         do { try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient); try AVAudioSession.sharedInstance().setActive(true) } catch let error as NSError { print(error) } 

@@ -7,6 +7,5 @@ target 'ColoShape' do
 
   # Pods for ColoShape
 pod 'SwiftConfettiView'
-pod 'Google-Mobile-Ads-SDK'
 
 end
