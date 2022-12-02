@@ -6,7 +6,7 @@
 //
 
 import SpriteKit
-import GameplayKit
+import GameKit
 import SwiftConfettiView
 
 class GameOverScene: SKScene {
@@ -24,16 +24,51 @@ class GameOverScene: SKScene {
         
         switch difficulty {
         case 0:
+            if defaults.bool(forKey: "GameCenter") {
+                GKLeaderboard.submitScore(
+                    score,
+                    context: 0,
+                    player: GKLocalPlayer.local,
+                    leaderboardIDs: ["coloshape_easy"]
+                ) { error in
+                    print(error ?? "Score \(self.score) added to easy leaderboard")
+                }
+            }
+            
             if score > defaults.integer(forKey: "EasyHS") {
                 defaults.set(score, forKey: "EasyHS")
+                
                 confettiView!.startConfetti()
             }
         case 1:
+            if defaults.bool(forKey: "GameCenter") {
+                GKLeaderboard.submitScore(
+                    score,
+                    context: 0,
+                    player: GKLocalPlayer.local,
+                    leaderboardIDs: ["coloshape_medium"]
+                ) { error in
+                    print(error ?? "Score \(self.score) added to medium leaderboard")
+                }
+            }
+            
             if score > defaults.integer(forKey: "MediumHS") {
                 defaults.set(score, forKey: "MediumHS")
+                
                 confettiView!.startConfetti()
             }
         default:
+            if defaults.bool(forKey: "GameCenter") {
+                GKLeaderboard.submitScore(
+                    score,
+                    context: 0,
+                    player: GKLocalPlayer.local,
+                    leaderboardIDs: ["coloshape_hard"]
+                ) { error in
+                    print(error ?? "Score \(self.score) added to hard leaderboard")
+                }
+            }
+            
             if score > defaults.integer(forKey: "HardHS") {
                 defaults.set(score, forKey: "HardHS")
                 confettiView!.startConfetti()

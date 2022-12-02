@@ -16,7 +16,6 @@
 		29A8199325A8757200C1DAE4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A8199225A8757200C1DAE4 /* Launch Screen.storyboard */; };
 		29C7900C25473B2C00D5AE94 /* ColoShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900B25473B2C00D5AE94 /* ColoShape.swift */; };
 		29C790102547591800D5AE94 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C7900F2547591800D5AE94 /* GameOverScene.swift */; };
-		29D5BB6725897713001295D2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5BB6625897713001295D2 /* StoreKit.framework */; };
 		29D9C32C257B2AE700F253F1 /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29D9C32B257B2AE700F253F1 /* Comfortaa.ttf */; };
 		29D9C32F257B2AF600F253F1 /* SquadaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 29D9C32E257B2AF600F253F1 /* SquadaOne.ttf */; };
 		29DE6743257ADC6B002B02B7 /* gameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 29DE6741257ADC6B002B02B7 /* gameOver.m4a */; };
@@ -46,6 +45,7 @@
 		29DE6746257ADC9C002B02B7 /* impact.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.m4a; sourceTree = "<group>"; };
 		29EC48722571A077007FE4FB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2BE0698134241A38D593D433 /* Pods_ColoShape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColoShape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E2C5329293706D9004D78AE /* ColoShape.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ColoShape.entitlements; sourceTree = "<group>"; };
 		A988D61C7A892A9AE30529B0 /* Pods-ColoShape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColoShape.debug.xcconfig"; path = "Target Support Files/Pods-ColoShape/Pods-ColoShape.debug.xcconfig"; sourceTree = "<group>"; };
 		E76BDC78EE2B8CCA2FD85BB4 /* Pods-ColoShape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColoShape.release.xcconfig"; path = "Target Support Files/Pods-ColoShape/Pods-ColoShape.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,7 +56,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB2031E34F2E9AADB2D80643 /* Pods_ColoShape.framework in Frameworks */,
-				29D5BB6725897713001295D2 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +83,7 @@
 		2921953625409F3C00715FAB /* ColoShape */ = {
 			isa = PBXGroup;
 			children = (
+				3E2C5329293706D9004D78AE /* ColoShape.entitlements */,
 				29DD64B925815DAE00D9C714 /* Sounds */,
 				29DD64B825815DAC00D9C714 /* Fonts */,
 				2921953725409F3C00715FAB /* AppDelegate.swift */,
@@ -332,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -388,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -404,12 +404,14 @@
 			baseConfigurationReference = A988D61C7A892A9AE30529B0 /* Pods-ColoShape.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = ColoShape/ColoShape.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3SXFHNCTW2;
 				INFOPLIST_FILE = ColoShape/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -417,6 +419,9 @@
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daviszarins.ColoShape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,12 +432,14 @@
 			baseConfigurationReference = E76BDC78EE2B8CCA2FD85BB4 /* Pods-ColoShape.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = ColoShape/ColoShape.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3SXFHNCTW2;
 				INFOPLIST_FILE = ColoShape/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +447,9 @@
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.daviszarins.ColoShape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SpriteKit
 
 struct ColoShape {
     static let shapes: [String] = ["circle", "square", "rhombus", "triangle", "hexagon"]

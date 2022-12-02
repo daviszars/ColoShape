@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import SpriteKit
-import GameplayKit
+import GameKit
 
 class GameViewController: UIViewController {
     
@@ -18,6 +17,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
@@ -25,14 +26,20 @@ class GameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         self.navigationController?.isNavigationBarHidden = true
+        
+        if defaults.bool(forKey: "GameCenter") {
+            GKAccessPoint.shared.location = .topTrailing
+            GKAccessPoint.shared.isActive = true
+        } else {
+            GKAccessPoint.shared.isActive = false
+        }
     }
-    
-    let defaults = UserDefaults.standard
-    let productID = "com.daviszarins.ColoShape.RemoveAds"
     
     //MARK: viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        authenticateUser()
         
         if let firstOpen = defaults.object(forKey: "FirstOpen") as? Date {
             // This is NOT the first launch
@@ -44,6 +51,7 @@ class GameViewController: UIViewController {
             defaults.set(Date(), forKey: "FirstOpen")
             defaults.set(true, forKey: "Sound")
             defaults.set(true, forKey: "Vibration")
+            defaults.set(true, forKey: "GameCenter")
             defaults.set(0, forKey: "EasyHS")
             defaults.set(0, forKey: "MediumHS")
             defaults.set(0, forKey: "HardHS")
@@ -70,6 +78,23 @@ class GameViewController: UIViewController {
         playButton.addGestureRecognizer(tap)
         
         launchGameScene(testMode: true, difficulty: difficultySegmentedControl.selectedSegmentIndex)
+
+    }
+    
+    //MARK: Game Center
+    private func authenticateUser() {
+        let player = GKLocalPlayer.local
+        player.authenticateHandler = { vc, error in
+            guard error == nil else {
+                print(error?.localizedDescription ?? "")
+                return
+            }
+            
+            if let vc = vc {
+                self.present(vc, animated: true, completion: nil)
+                
+            }
+        }
 
     }
     
@@ -114,16 +139,23 @@ class GameViewController: UIViewController {
     
     //MARK: playButtonPressed()
     @objc func playButtonPressed(sender: UITapGestureRecognizer? = nil) {
-        //backgroundImageView.removeFromSuperview()
+        GKAccessPoint.shared.isActive = false
         menuTitleLabel.removeFromSuperview()
         playButton.removeFromSuperview()
         difficultySegmentedControl.removeFromSuperview()
         settingsButton.removeFromSuperview()
         highScoreLabel.removeFromSuperview()
         defaults.set(difficultySegmentedControl.selectedSegmentIndex, forKey: "Difficulty")
-        let chance = 1...2
         backgroundImageView.removeFromSuperview()
         launchGameScene(testMode: false, difficulty: defaults.integer(forKey: "Difficulty"))
     }
     
+}
+
+extension GameViewController: GKGameCenterControllerDelegate {
+
+  func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+    gameCenterViewController.dismiss(animated: true, completion: nil)
+  }
+
 }

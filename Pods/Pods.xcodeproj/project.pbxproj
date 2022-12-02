@@ -48,18 +48,18 @@
 		3EBC2448C8506F65B67D19AD4C5F5A96 /* Pods-ColoShape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ColoShape.release.xcconfig"; sourceTree = "<group>"; };
 		4B1530FBFAA1690D27A135E4CC85AA07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		4D7B23FE1A688100FE70A5215B5F3A1E /* Pods-ColoShape-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ColoShape-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4DC9A595BC276DD77E5080354EFFE74F /* SwiftConfettiView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftConfettiView.framework; path = SwiftConfettiView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		585C226ED7348446721932909C12F578 /* Pods_ColoShape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ColoShape.framework; path = "Pods-ColoShape.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC9A595BC276DD77E5080354EFFE74F /* SwiftConfettiView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftConfettiView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		585C226ED7348446721932909C12F578 /* Pods_ColoShape.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColoShape.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22B3C992B86DA8468B9A16E9913209 /* SwiftConfettiView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftConfettiView.swift; path = SwiftConfettiView/Classes/SwiftConfettiView.swift; sourceTree = "<group>"; };
 		6A5EA1A43D8EF89636A5D22FF92239D9 /* Pods-ColoShape.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ColoShape.modulemap"; sourceTree = "<group>"; };
 		79C7B39D0F20D42FD10BDFDFE232FA07 /* diamond.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = diamond.png; path = SwiftConfettiView/Assets/diamond.png; sourceTree = "<group>"; };
-		7B5B6DA880ADA4130BCC09196858DDAD /* SwiftConfettiView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SwiftConfettiView.bundle; path = "SwiftConfettiView-SwiftConfettiView.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B5B6DA880ADA4130BCC09196858DDAD /* SwiftConfettiView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftConfettiView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B0180EBC8F41517AF64573F95FBD20 /* SwiftConfettiView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftConfettiView-dummy.m"; sourceTree = "<group>"; };
 		8CE2AD31F00D0EF9C522211BDDBF6C3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		8F0417EA806408669743B4B961CAA93E /* SwiftConfettiView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftConfettiView-Info.plist"; sourceTree = "<group>"; };
 		97592E4C8887746D627522ABBED2548A /* star.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = star.png; path = SwiftConfettiView/Assets/star.png; sourceTree = "<group>"; };
 		98892D821DADA4C3C2965FE349280DFF /* ResourceBundle-SwiftConfettiView-SwiftConfettiView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-SwiftConfettiView-SwiftConfettiView-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E8A5851739F8339B13314FA2D10F877 /* Pods-ColoShape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ColoShape.debug.xcconfig"; sourceTree = "<group>"; };
 		9FE46B11FEBCBB7C689EB07A5E57BD38 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		B54E7E50A0A562F0CDB9D28763FF865B /* SwiftConfettiView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftConfettiView-umbrella.h"; sourceTree = "<group>"; };
@@ -116,7 +116,6 @@
 				85161D8A48C4E1C8464A39CAD7AA6E7E /* Resources */,
 				38DA7B14CBA6F107675B45DED5A091FB /* Support Files */,
 			);
-			name = SwiftConfettiView;
 			path = SwiftConfettiView;
 			sourceTree = "<group>";
 		};
@@ -432,6 +431,7 @@
 			baseConfigurationReference = EE7BB6A4E97C9A53ED7B0EA7B418BAA3 /* SwiftConfettiView.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftConfettiView";
+				DEVELOPMENT_TEAM = 3SXFHNCTW2;
 				IBSC_MODULE = SwiftConfettiView;
 				INFOPLIST_FILE = "Target Support Files/SwiftConfettiView/ResourceBundle-SwiftConfettiView-SwiftConfettiView-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -448,6 +448,7 @@
 			baseConfigurationReference = E41E4CF7A3A0F5DD2634C8262260275E /* SwiftConfettiView.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftConfettiView";
+				DEVELOPMENT_TEAM = 3SXFHNCTW2;
 				IBSC_MODULE = SwiftConfettiView;
 				INFOPLIST_FILE = "Target Support Files/SwiftConfettiView/ResourceBundle-SwiftConfettiView-SwiftConfettiView-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

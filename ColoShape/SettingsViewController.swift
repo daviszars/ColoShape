@@ -11,6 +11,7 @@ class SettingsViewController: UITableViewController{
     
     @IBOutlet weak var soundSwitch: UISwitch!
     @IBOutlet weak var vibrationSwitch: UISwitch!
+    @IBOutlet weak var gameCenterSwitch: UISwitch!
     
     let defaults = UserDefaults.standard
     
@@ -26,11 +27,13 @@ class SettingsViewController: UITableViewController{
         
         soundSwitch.isOn = defaults.bool(forKey: "Sound")
         vibrationSwitch.isOn = defaults.bool(forKey: "Vibration")
+        gameCenterSwitch.isOn = defaults.bool(forKey: "GameCenter")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         defaults.set(soundSwitch.isOn, forKey: "Sound")
         defaults.set(vibrationSwitch.isOn, forKey: "Vibration")
+        defaults.set(gameCenterSwitch.isOn, forKey: "GameCenter")
     }
     
 }

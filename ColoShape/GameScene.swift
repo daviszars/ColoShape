@@ -6,7 +6,6 @@
 //
 
 import SpriteKit
-import GameplayKit
 
 class GameScene: SKScene {
     
@@ -17,14 +16,17 @@ class GameScene: SKScene {
     var score: Int = 0
     var scoreLabel = SKLabelNode()
     var difficulty: Int = 0
-    var counter: Int = 0
-    var badCounter: Int = 0
+    var counter: Int = 0 // for counting added objects
+    var badCounter: Int = 0 // for counting objects in a row that are not "clickable"
     let rand: [Int] = [1, 2, 3]
-    var moveSpeed: Float = 3.0
-    var testMode: Bool = false
+    var moveSpeed: Float = 3.5 // time required for object to move from top to bottom (less means faster)
+    var waitDuration: Double = 0.65 // time passed between adding objects
+    var testMode: Bool = false // testMode=true means that game plays in the background in main menu and objects are not clickable
     let defaults = UserDefaults.standard
     let impactSound = SKAction.playSoundFileNamed("impact.m4a", waitForCompletion: false)
     let gameOverSound = SKAction.playSoundFileNamed("gameOver.m4a", waitForCompletion: false)
+    var isSoundEnabled: Bool = false
+    var isVibrationEnabled: Bool = false
     
     //MARK: makeShape()
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
@@ -55,6 +57,9 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
+        isSoundEnabled = defaults.bool(forKey: "Sound")
+        isVibrationEnabled = defaults.bool(forKey: "Vibration")
+        
         scoreLabel.text = ("Score: \(score)")
         scoreLabel.fontSize = 20
         scoreLabel.fontColor = SKColor.lightGray
@@ -63,10 +68,9 @@ class GameScene: SKScene {
             addChild(scoreLabel)
         }
         
-        var waitDuration: Double
         switch difficulty {
         case 0:
-            waitDuration = 0.55
+            waitDuration = 0.60
             moveSpeed = 4.2
             targetColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
             targetShape = ColoShape.shapes.randomElement()
@@ -75,13 +79,13 @@ class GameScene: SKScene {
             } while (secondTargetShape == targetShape)
             targetNumber = ""
         case 1:
-            waitDuration = 0.60
+            waitDuration = 0.65
             moveSpeed = 4.4
             targetColor = ColoShape.colors.randomElement()
             targetShape = ColoShape.shapes.randomElement()
             targetNumber = ""
         default:
-            waitDuration = 0.65
+            waitDuration = 0.70
             moveSpeed = 4.6
             targetColor = ColoShape.colors.randomElement()
             targetShape = ColoShape.shapes.randomElement()
@@ -105,15 +109,16 @@ class GameScene: SKScene {
         }
         addChild(targetColoShape)
 
-        let addShapes = SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.run(addShape),
-                SKAction.wait(forDuration: waitDuration)
-            ])
-        )
-        let sequence = SKAction.sequence([fadeIn, fadeOut, addShapes])
+        let sequence = SKAction.sequence([fadeIn, fadeOut, SKAction.run({[unowned self] in self.recursive(node: targetColoShape)})])
         targetColoShape.run(sequence)
+    }
+    
+    func recursive(node: SKSpriteNode) {
+        let wait = SKAction.wait(forDuration: waitDuration)
+        let add = SKAction.run(addShape)
         
+        let recursive = SKAction.sequence([wait, add, SKAction.run({[unowned self] in self.recursive(node: node)})])
+        node.run(recursive, withKey: "aKey")
     }
     
     //MARK: addShape()
@@ -123,11 +128,32 @@ class GameScene: SKScene {
         var shapes: String? = nil
         var numbers: String? = nil
         
+        if waitDuration > 0.28 {
+            waitDuration*=0.98
+        }
+        
         counter+=1
-        if counter < 10 {
-            moveSpeed*=0.980
-        } else if counter < 20 {
-            moveSpeed*=0.975
+        
+        switch counter {
+            case 0...10:
+                moveSpeed*=0.97
+            case 11...20:
+                moveSpeed*=0.96
+            default:
+                switch difficulty {
+                    case 0:
+                        if moveSpeed > 3 {
+                            moveSpeed*=0.995
+                        }
+                    case 1:
+                        if moveSpeed > 3.2 {
+                            moveSpeed*=0.995
+                        }
+                    default:
+                        if moveSpeed > 3.5 {
+                            moveSpeed*=0.995
+                        }
+                }
         }
         
         switch difficulty {
@@ -216,11 +242,11 @@ class GameScene: SKScene {
             if testMode == false {
                 let location = touch.location(in: self)
                 if (atPoint(location).name == "good") {
-                    if defaults.bool(forKey: "Vibration") {
+                    if isVibrationEnabled {
                         let generator = UIImpactFeedbackGenerator(style: .medium)
                         generator.impactOccurred()
                     }
-                    if defaults.bool(forKey: "Sound") {
+                    if isSoundEnabled {
                         run(impactSound)
                     }
                     atPoint(location).removeFromParent()
@@ -235,10 +261,10 @@ class GameScene: SKScene {
     
     //MARK: gameOver()
     func gameOver(node: SKNode) {
-        if defaults.bool(forKey: "Sound") {
+        if isSoundEnabled {
             run(gameOverSound)
         }
-        if defaults.bool(forKey: "Vibration") {
+        if isVibrationEnabled {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.error)
         }
