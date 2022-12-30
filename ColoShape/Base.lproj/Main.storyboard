@@ -279,6 +279,55 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="bhS-gA-ATA">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Vh4-VK-TTC">
+                                        <rect key="frame" x="0.0" y="268" width="414" height="47.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vh4-VK-TTC" id="aJX-UI-pFP">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset highscore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bic-AR-vg7">
+                                                    <rect key="frame" x="53" y="11" width="123" height="25.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.counterclockwise" translatesAutoresizingMaskIntoConstraints="NO" id="W3o-yO-DWg">
+                                                    <rect key="frame" x="20" y="11" width="25" height="25.5"/>
+                                                    <color key="tintColor" systemColor="labelColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="LmT-bK-ukd"/>
+                                                        <constraint firstAttribute="width" constant="25" id="MTG-BF-Fvs"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ed5-Yq-bqx">
+                                                    <rect key="frame" x="45" y="0.0" width="369" height="47.5"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <connections>
+                                                        <action selector="resetBtnTapped:" destination="nOe-WA-WKP" eventType="touchUpInside" id="oPY-a8-30w"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ed5-Yq-bqx" firstAttribute="leading" secondItem="W3o-yO-DWg" secondAttribute="trailing" id="Eq8-e8-aHk"/>
+                                                <constraint firstItem="W3o-yO-DWg" firstAttribute="leading" secondItem="aJX-UI-pFP" secondAttribute="leadingMargin" id="PDP-VC-0ZX"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Bic-AR-vg7" secondAttribute="trailing" constant="20" symbolic="YES" id="aAi-SI-3Qq"/>
+                                                <constraint firstItem="Bic-AR-vg7" firstAttribute="top" secondItem="aJX-UI-pFP" secondAttribute="topMargin" id="dcR-EG-j25"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Bic-AR-vg7" secondAttribute="bottom" id="dlR-Ul-vL7"/>
+                                                <constraint firstItem="W3o-yO-DWg" firstAttribute="top" secondItem="aJX-UI-pFP" secondAttribute="topMargin" id="ffi-dJ-HLJ"/>
+                                                <constraint firstItem="ed5-Yq-bqx" firstAttribute="top" secondItem="aJX-UI-pFP" secondAttribute="top" id="nIS-y5-rhg"/>
+                                                <constraint firstItem="Bic-AR-vg7" firstAttribute="leading" secondItem="W3o-yO-DWg" secondAttribute="trailing" constant="8" id="ndh-cX-kI2"/>
+                                                <constraint firstAttribute="bottom" secondItem="ed5-Yq-bqx" secondAttribute="bottom" id="ocn-7T-ueB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="W3o-yO-DWg" secondAttribute="bottom" id="uhN-4X-CC0"/>
+                                                <constraint firstItem="W3o-yO-DWg" firstAttribute="centerY" secondItem="aJX-UI-pFP" secondAttribute="centerY" id="vEb-k2-Hfx"/>
+                                                <constraint firstAttribute="trailing" secondItem="ed5-Yq-bqx" secondAttribute="trailing" id="xke-Cs-eLK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="nOe-WA-WKP" id="AMO-m9-Hos"/>
@@ -288,6 +337,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="VQF-t8-miH"/>
                     <connections>
                         <outlet property="gameCenterSwitch" destination="RRe-Ib-45k" id="kWs-CB-1Nv"/>
+                        <outlet property="resetLabel" destination="Bic-AR-vg7" id="MyH-ag-j69"/>
                         <outlet property="soundSwitch" destination="55P-xi-136" id="NQ7-g6-JDF"/>
                         <outlet property="vibrationSwitch" destination="ajJ-q0-Hhc" id="5zv-ED-8ne"/>
                     </connections>
@@ -413,6 +463,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.counterclockwise" width="12" height="14"/>
         <image name="gamecontroller" width="19" height="12"/>
         <image name="graduationcap" width="18" height="16"/>
         <image name="htp1" width="273.5" height="363"/>

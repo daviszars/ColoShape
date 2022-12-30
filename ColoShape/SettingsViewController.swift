@@ -13,6 +13,8 @@ class SettingsViewController: UITableViewController{
     @IBOutlet weak var vibrationSwitch: UISwitch!
     @IBOutlet weak var gameCenterSwitch: UISwitch!
     
+    @IBOutlet weak var resetLabel: UILabel!
+    
     let defaults = UserDefaults.standard
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,4 +38,11 @@ class SettingsViewController: UITableViewController{
         defaults.set(gameCenterSwitch.isOn, forKey: "GameCenter")
     }
     
+    @IBAction func resetBtnTapped(_ sender: Any) {
+        resetLabel.text = "Highscore has been reset"
+        
+        defaults.set(0, forKey: "EasyHS")
+        defaults.set(0, forKey: "MediumHS")
+        defaults.set(0, forKey: "HardHS")
+    }
 }

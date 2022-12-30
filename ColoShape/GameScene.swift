@@ -73,23 +73,23 @@ class GameScene: SKScene {
             waitDuration = 0.60
             moveSpeed = 4.2
             targetColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
-            targetShape = ColoShape.shapes.randomElement()
+            targetShape = ShapeObject.shapes.randomElement()
             repeat {
-                secondTargetShape = ColoShape.shapes.randomElement()
+                secondTargetShape = ShapeObject.shapes.randomElement()
             } while (secondTargetShape == targetShape)
             targetNumber = ""
         case 1:
             waitDuration = 0.65
             moveSpeed = 4.4
-            targetColor = ColoShape.colors.randomElement()
-            targetShape = ColoShape.shapes.randomElement()
+            targetColor = ShapeObject.colors.randomElement()
+            targetShape = ShapeObject.shapes.randomElement()
             targetNumber = ""
         default:
             waitDuration = 0.70
             moveSpeed = 4.6
-            targetColor = ColoShape.colors.randomElement()
-            targetShape = ColoShape.shapes.randomElement()
-            targetNumber = ColoShape.numbers.randomElement()
+            targetColor = ShapeObject.colors.randomElement()
+            targetShape = ShapeObject.shapes.randomElement()
+            targetNumber = ShapeObject.numbers.randomElement()
         }
         
         let fadeIn = SKAction.fadeIn(withDuration: 1.0)
@@ -113,6 +113,7 @@ class GameScene: SKScene {
         targetColoShape.run(sequence)
     }
     
+    // we need to use recursive function for adding shapes because this allows us to make an infinite cycle of adding shapes with different wait time periods between adding shapes instead of using a SpriteKit cycle with static wait time.
     func recursive(node: SKSpriteNode) {
         let wait = SKAction.wait(forDuration: waitDuration)
         let add = SKAction.run(addShape)
@@ -159,7 +160,7 @@ class GameScene: SKScene {
         switch difficulty {
         case 0:
             colors = UIColor.lightGray
-            shapes = ColoShape.shapes.randomElement()!
+            shapes = ShapeObject.shapes.randomElement()!
             numbers = ""
             if counter % 3 == 0 && chance == 1 {
                 shapes = targetShape
@@ -170,8 +171,8 @@ class GameScene: SKScene {
                 shapes = targetShape
             }
         case 1:
-            colors = ColoShape.colors.randomElement()!
-            shapes = ColoShape.shapes.randomElement()!
+            colors = ShapeObject.colors.randomElement()!
+            shapes = ShapeObject.shapes.randomElement()!
             numbers = ""
             if counter % 2 == 0 && chance == 1 {
                 shapes = targetShape
@@ -190,9 +191,9 @@ class GameScene: SKScene {
                 }
             }
         default:
-            colors = ColoShape.colors.randomElement()!
-            shapes = ColoShape.shapes.randomElement()!
-            numbers = ColoShape.numbers.randomElement()!
+            colors = ShapeObject.colors.randomElement()!
+            shapes = ShapeObject.shapes.randomElement()!
+            numbers = ShapeObject.numbers.randomElement()!
             if badCounter == 4 {
                 switch chance {
                 case 1:

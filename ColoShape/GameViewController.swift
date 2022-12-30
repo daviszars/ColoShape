@@ -28,18 +28,28 @@ class GameViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         
         if defaults.bool(forKey: "GameCenter") {
+            authenticateUser()
             GKAccessPoint.shared.location = .topTrailing
             GKAccessPoint.shared.isActive = true
         } else {
             GKAccessPoint.shared.isActive = false
         }
+        
+        // Score may have been reset in settings, so we set highScoreLabel in viewWillAppear
+        switch difficultySegmentedControl.selectedSegmentIndex {
+        case 0:
+            highScoreLabel.text = "High Score: \(defaults.integer(forKey: "EasyHS"))"
+        case 1:
+            highScoreLabel.text = "High Score: \(defaults.integer(forKey: "MediumHS"))"
+        default:
+            highScoreLabel.text = "High Score: \(defaults.integer(forKey: "HardHS"))"
+        }
+        
     }
     
     //MARK: viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        authenticateUser()
         
         if let firstOpen = defaults.object(forKey: "FirstOpen") as? Date {
             // This is NOT the first launch
@@ -63,16 +73,6 @@ class GameViewController: UIViewController {
                               NSAttributedString.Key.font: font!]
             difficultySegmentedControl.setTitleTextAttributes(textAttributes, for: .normal)
             difficultySegmentedControl.setTitleTextAttributes(textAttributes, for: .selected)
-        
-        
-        switch difficultySegmentedControl.selectedSegmentIndex {
-        case 0:
-            highScoreLabel.text = "High Score: \(defaults.integer(forKey: "EasyHS"))"
-        case 1:
-            highScoreLabel.text = "High Score: \(defaults.integer(forKey: "MediumHS"))"
-        default:
-            highScoreLabel.text = "High Score: \(defaults.integer(forKey: "HardHS"))"
-        }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(playButtonPressed))
         playButton.addGestureRecognizer(tap)
