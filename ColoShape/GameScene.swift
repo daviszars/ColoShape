@@ -32,7 +32,7 @@ class GameScene: SKScene {
     func makeShape(shape: String, color: UIColor, number: String) -> SKSpriteNode {
         let shapeConfig = UIImage.SymbolConfiguration(pointSize: 50, weight: .heavy, scale: .large)
         let image = UIImage(systemName: shape, withConfiguration: shapeConfig)!.withTintColor(color)
-        let data = image.pngData()!
+        let data = image.pngData()! // we need to convert UIImage to png and back to UIImage because otherwise SKTexture displays all shapes as black
         let newImage = UIImage(data:data)!
         let texture = SKTexture(image: newImage)
         let shapeSize = size.height * 0.13
@@ -42,6 +42,8 @@ class GameScene: SKScene {
         numberLabel.text = number
         numberLabel.fontSize = 34
         numberLabel.fontColor = color
+        
+        // triangle requires number y position offset so it looks more centered
         if shape == "triangle" {
             numberLabel.position = CGPoint(x: -3, y: -17)
         } else {
@@ -68,6 +70,8 @@ class GameScene: SKScene {
             addChild(scoreLabel)
         }
         
+        // choose target shape properties when creating gameScene
+        // target shape means a shape that should be clicked for a point
         switch difficulty {
         case 0:
             waitDuration = 0.60
@@ -92,28 +96,29 @@ class GameScene: SKScene {
             targetNumber = ShapeObject.numbers.randomElement()
         }
         
+        // show the target shape at the beginning of the game with a fade effect
         let fadeIn = SKAction.fadeIn(withDuration: 1.0)
         let fadeOut = SKAction.fadeOut(withDuration: 1.0)
-        let secondSequence = SKAction.sequence([fadeIn, fadeOut])
+        let fadeSequence = SKAction.sequence([fadeIn, fadeOut])
         
         let targetColoShape = makeShape(shape: targetShape!, color: targetColor!, number: targetNumber!)
         targetColoShape.position = CGPoint(x: size.width / 2, y: size.height / 2)
         targetColoShape.alpha = 0.0
-        if difficulty == 0 {
+        if difficulty == 0 { // easy difficulty has 2 target shapes
             let secondTargetColoShape = makeShape(shape: secondTargetShape!, color: targetColor!, number: targetNumber!)
             secondTargetColoShape.alpha = 0.0
             targetColoShape.position = CGPoint(x: size.width / 2 - (targetColoShape.size.width/2), y: size.height / 2)
             secondTargetColoShape.position = CGPoint(x: size.width / 2 + (targetColoShape.size.width/2), y: size.height / 2)
             addChild(secondTargetColoShape)
-            secondTargetColoShape.run(secondSequence)
+            secondTargetColoShape.run(fadeSequence)
         }
         addChild(targetColoShape)
 
-        let sequence = SKAction.sequence([fadeIn, fadeOut, SKAction.run({[unowned self] in self.recursive(node: targetColoShape)})])
+        let sequence = SKAction.sequence([fadeSequence, SKAction.run({[unowned self] in self.recursive(node: targetColoShape)})])
         targetColoShape.run(sequence)
     }
     
-    // we need to use recursive function for adding shapes because this allows us to make an infinite cycle of adding shapes with different wait time periods between adding shapes instead of using a SpriteKit cycle with static wait time.
+    // we need to use recursive function for adding shapes because this allows us to make an infinite cycle of adding shapes with different wait time periods between adding shapes instead of using a SpriteKit cycle with static wait time
     func recursive(node: SKSpriteNode) {
         let wait = SKAction.wait(forDuration: waitDuration)
         let add = SKAction.run(addShape)
@@ -162,12 +167,14 @@ class GameScene: SKScene {
             colors = UIColor.lightGray
             shapes = ShapeObject.shapes.randomElement()!
             numbers = ""
+            // difficulty balancing - every 2nd and 3rd added shape has 33% chance of having targetShape property
+            // chance variable is a random number 1..3 chosen at the start of the game
             if counter % 3 == 0 && chance == 1 {
                 shapes = targetShape
             } else if counter % 2 == 0 && chance == 1 {
                 shapes = secondTargetShape
             }
-            if badCounter == 4 {
+            if badCounter == 4 { // badCounter shows how many unclickable shapes have been added in a row - if 4, force add clickable shape
                 shapes = targetShape
             }
         case 1:
@@ -212,10 +219,10 @@ class GameScene: SKScene {
         shape.position = CGPoint(x: startingX, y: size.height + shape.size.height/2)
         
         if targetShape == shapes || (difficulty != 0 && targetColor == colors) || (difficulty == 2 && targetNumber == numbers) || (difficulty == 0 && secondTargetShape == shapes) {
-            shape.name = "good"
+            shape.name = "good" // good means shape should be clicked
             badCounter = 0
         } else {
-            shape.name = "bad"
+            shape.name = "bad" // bad means shape should not be clicked
             badCounter+=1
         }
         addChild(shape)
@@ -228,9 +235,9 @@ class GameScene: SKScene {
     
     //MARK: update()
     override func update(_ currentTime: TimeInterval) {
-        if testMode == false {
+        if testMode == false { // testMode=true is used in main menu (for end game prevention and infinite cycle)
             if case let shape as SKSpriteNode = self.childNode(withName: "good") {
-                if shape.position.y <= shape.size.height/2 {
+                if shape.position.y <= shape.size.height/2 { // if target shape touches bottom screen, game ends
                     self.gameOver(node: shape)
                 }
             }
