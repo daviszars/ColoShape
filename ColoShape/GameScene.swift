@@ -118,7 +118,8 @@ class GameScene: SKScene {
         targetColoShape.run(sequence)
     }
     
-    // we need to use recursive function for adding shapes because this allows us to make an infinite cycle of adding shapes with different wait time periods between adding shapes instead of using a SpriteKit cycle with static wait time
+    // we need to use recursive function for adding shapes because this allows us to make an infinite cycle of adding shapes
+    // with different wait time periods between adding shapes instead of using a SpriteKit cycle with static wait time
     func recursive(node: SKSpriteNode) {
         let wait = SKAction.wait(forDuration: waitDuration)
         let add = SKAction.run(addShape)
@@ -218,7 +219,10 @@ class GameScene: SKScene {
         let startingX = CGFloat.random(in: size.width*0.15 ... size.width*0.85)
         shape.position = CGPoint(x: startingX, y: size.height + shape.size.height/2)
         
-        if targetShape == shapes || (difficulty != 0 && targetColor == colors) || (difficulty == 2 && targetNumber == numbers) || (difficulty == 0 && secondTargetShape == shapes) {
+        if targetShape == shapes
+            || (difficulty != 0 && targetColor == colors)
+            || (difficulty == 2 && targetNumber == numbers)
+            || (difficulty == 0 && secondTargetShape == shapes) {
             shape.name = "good" // good means shape should be clicked
             badCounter = 0
         } else {
